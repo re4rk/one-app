@@ -16,3 +16,4 @@ rootProject.name = "oneApp"
 include ':presentation'
 include ':domain'
 include ':app'
+include ':data'

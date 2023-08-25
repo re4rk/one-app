@@ -43,6 +43,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation(project(mapOf("path" to ":presentation")))
     implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":data")))
 
     // hilts
     implementation("com.google.dagger:hilt-android:2.47")
