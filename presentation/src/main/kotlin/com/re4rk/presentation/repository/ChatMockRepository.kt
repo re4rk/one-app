@@ -1,4 +1,4 @@
-package com.re4rk.oneApp.repository
+package com.re4rk.presentation.repository
 
 import com.re4rk.domain.model.ChatRoom
 import com.re4rk.domain.repository.ChatRepository

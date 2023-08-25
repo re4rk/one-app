@@ -1,18 +1,21 @@
-package com.re4rk.oneApp.ui
+package com.re4rk.presentation.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.re4rk.domain.repository.ChatRepository
-import com.re4rk.oneApp.util.Result
-import com.re4rk.oneApp.util.asResult
+import com.re4rk.presentation.util.Result
+import com.re4rk.presentation.util.asResult
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
-class HomeViewModel(
-    private val chatRepository: ChatRepository,
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    chatRepository: ChatRepository,
 ) : ViewModel() {
     val homeState: StateFlow<HomeState> = homeState(
         chatRepository = chatRepository,

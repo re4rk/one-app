@@ -1,4 +1,4 @@
-package com.re4rk.oneApp.ui.theme
+package com.re4rk.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

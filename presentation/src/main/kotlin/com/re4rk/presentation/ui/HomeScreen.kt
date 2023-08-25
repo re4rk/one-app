@@ -1,4 +1,4 @@
-package com.re4rk.oneApp.ui
+package com.re4rk.presentation.ui
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.re4rk.domain.model.ChatRoom
 import com.re4rk.oneApp.R
-import com.re4rk.oneApp.ui.theme.OneAppTheme
+import com.re4rk.presentation.ui.theme.OneAppTheme
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable

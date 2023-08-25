@@ -1,4 +1,4 @@
-package com.re4rk.oneApp.ui
+package com.re4rk.presentation.ui
 
 import com.re4rk.domain.model.ChatRoom
 
