@@ -1,5 +1,7 @@
 package com.re4rk.presentation.ui.chatRoomList
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,6 +16,12 @@ class ChatRoomListActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             HomeRoot(viewModel)
+        }
+    }
+
+    companion object {
+        fun getIntent(context: Context): Intent {
+            return Intent(context, ChatRoomListActivity::class.java)
         }
     }
 }
