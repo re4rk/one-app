@@ -8,6 +8,8 @@ plugins {
     kotlin("android") version kotlinVersion apply false
     kotlin("jvm") version kotlinVersion apply false
     id("org.jlleitschuh.gradle.ktlint") version "11.1.0" apply false
+
+    id("com.google.dagger.hilt.android") version "2.47" apply false
 }
 
 buildscript {
