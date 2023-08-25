@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui
+package com.re4rk.presentation.ui.chatRoomList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,26 +14,26 @@ import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class ChatRoomListViewModel @Inject constructor(
     getChatRoomsUseCase: GetChatRoomsUseCase,
 ) : ViewModel() {
-    val homeState: StateFlow<HomeState> = homeState(
+    val chatRoomListState: StateFlow<ChatRoomListState> = chatRoomListState(
         getChatRoomsUseCase = getChatRoomsUseCase,
     ).stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = HomeState.Loading,
+        initialValue = ChatRoomListState.Loading,
     )
 }
 
-private fun homeState(
+private fun chatRoomListState(
     getChatRoomsUseCase: GetChatRoomsUseCase,
-): Flow<HomeState> {
+): Flow<ChatRoomListState> {
     return getChatRoomsUseCase().asResult().map { result ->
         when (result) {
-            is Result.Error -> HomeState.Error(result.exception)
-            is Result.Loading -> HomeState.Loading
-            is Result.Success -> HomeState.Success(result.data)
+            is Result.Error -> ChatRoomListState.Error(result.exception)
+            is Result.Loading -> ChatRoomListState.Loading
+            is Result.Success -> ChatRoomListState.Success(result.data)
         }
     }
 }

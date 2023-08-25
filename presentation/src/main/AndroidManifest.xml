@@ -14,7 +14,7 @@
         android:theme="@style/Theme.OneApp"
         tools:targetApi="31">
         <activity
-            android:name="com.re4rk.presentation.ui.HomeActivity"
+            android:name="com.re4rk.presentation.ui.chatRoomList.ChatRoomListActivity"
             android:exported="true"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.OneApp">

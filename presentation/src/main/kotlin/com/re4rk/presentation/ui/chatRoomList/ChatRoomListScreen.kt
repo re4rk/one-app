@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui
+package com.re4rk.presentation.ui.chatRoomList
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -37,12 +37,12 @@ import com.re4rk.presentation.ui.theme.OneAppTheme
 import com.skydoves.landscapist.glide.GlideImage
 
 @Composable
-fun HomeRoot(homeViewModel: HomeViewModel) {
-    val homeState: HomeState by homeViewModel.homeState.collectAsStateWithLifecycle()
-    when (val state = homeState) {
-        is HomeState.Loading -> Text(text = "Loading...")
-        is HomeState.Error -> Text(text = "Error")
-        is HomeState.Success -> Screen(state.chatRooms)
+fun HomeRoot(chatRoomListViewModel: ChatRoomListViewModel) {
+    val chatRoomListState: ChatRoomListState by chatRoomListViewModel.chatRoomListState.collectAsStateWithLifecycle()
+    when (val state = chatRoomListState) {
+        is ChatRoomListState.Loading -> Text(text = "Loading...")
+        is ChatRoomListState.Error -> Text(text = "Error")
+        is ChatRoomListState.Success -> Screen(state.chatRooms)
     }
 }
 

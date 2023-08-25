@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui
+package com.re4rk.presentation.ui.chatRoomList
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,8 +7,8 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : ComponentActivity() {
-    private val viewModel: HomeViewModel by viewModels()
+class ChatRoomListActivity : ComponentActivity() {
+    private val viewModel: ChatRoomListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
