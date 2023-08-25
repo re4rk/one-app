@@ -13,12 +13,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
@@ -28,20 +30,26 @@ import androidx.compose.ui.text.style.TextOverflow.Companion.Ellipsis
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.re4rk.domain.model.ChatRoom
 import com.re4rk.oneApp.R
 import com.re4rk.oneApp.ui.theme.OneAppTheme
+import com.skydoves.landscapist.glide.GlideImage
 
-data class ChatRoom(
-    val profileImageId: Int,
-    val name: String,
-    val contents: String,
-    val time: String,
-)
+@Composable
+fun HomeRoot(homeViewModel: HomeViewModel) {
+    val homeState: HomeState by homeViewModel.homeState.collectAsStateWithLifecycle()
+    when (val state = homeState) {
+        is HomeState.Loading -> Text(text = "Loading...")
+        is HomeState.Error -> Text(text = "Error")
+        is HomeState.Success -> Screen(state.chatRooms)
+    }
+}
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Screen(chatRooms: List<ChatRoom>) {
+private fun Screen(chatRooms: List<ChatRoom>) {
     OneAppTheme {
         Scaffold(
             modifier = Modifier
@@ -89,8 +97,8 @@ private fun ChatRoomList(chatRooms: List<ChatRoom>) {
         item {
             ChatRoomHeader()
         }
-        items(chatRooms.size) { index ->
-            ChatRoomItem(chatRooms[index])
+        items(chatRooms) { chatRoom ->
+            ChatRoomItem(chatRoom)
         }
     })
 }
@@ -122,16 +130,16 @@ private fun ChatRoomItem(
                 vertical = 8.dp,
             ),
     ) {
-        ChatRoomProfile(profileImageId = chatRoom.profileImageId)
+        ChatRoomProfile(profileUrl = chatRoom.profile)
 
         Spacer(modifier = Modifier.padding(start = 8.dp))
 
         Column(modifier = Modifier.weight(1f)) {
-            ChatRoomName(name = chatRoom.name)
-            ChatRoomContents(contents = chatRoom.contents)
+            ChatRoomName(name = chatRoom.title)
+            ChatRoomContents(contents = chatRoom.lastMessage)
         }
 
-        ChatRoomTime(time = chatRoom.time)
+        ChatRoomTime(time = chatRoom.lastMessageTime)
     }
 }
 
@@ -144,13 +152,15 @@ private fun ChatRoomTime(time: String) {
 }
 
 @Composable
-private fun ChatRoomProfile(profileImageId: Int) {
-    Image(
-        painter = painterResource(id = profileImageId),
+private fun ChatRoomProfile(profileUrl: String) {
+    // Glide
+    GlideImage(
+        imageModel = profileUrl,
         contentDescription = null,
         modifier = Modifier
             .size(56.dp)
             .clip(MaterialTheme.shapes.small),
+        previewPlaceholder = R.drawable.ic_launcher_background,
     )
 }
 
@@ -180,43 +190,56 @@ private fun ChatRoomContents(contents: String) {
     )
 }
 
-val previewChatRooms = listOf(
-    ChatRoom(
-        profileImageId = R.drawable.img_default_image,
-        name = "우아한테크코스",
-        contents = "contentscontentscontentscontentscontents",
-        time = "time",
-    ),
-    ChatRoom(
-        profileImageId = R.drawable.img_default_image,
-        name = "거지방",
-        contents = "안녕하세요!\n 공지확인해주시고 들낙금지ㅜㅜ...",
-        time = "오후 7:06",
-    ),
-    ChatRoom(
-        profileImageId = R.drawable.img_default_image,
-        name = "어플(앱)을 연구하는 사람들-안드로이드,IOS,개발자",
-        contents = "그냥 안채우는ㅋㅋㅋ",
-        time = "오후 6:18",
-    ),
-    ChatRoom(
-        profileImageId = R.drawable.img_default_image,
-        name = "BoB 총동문회: 소식방",
-        contents = "<쿠팡 로지스틱스 개인정보보호 8년 이상 경력직 채용>\n[CLS] Privacy 담당자 채용...",
-        time = "오후 5:56",
-    ),
-    ChatRoom(
-        profileImageId = R.drawable.img_default_image,
-        name = "카카오페이",
-        contents = "결제가 완료되었어요.\n....",
-        time = "오후 5:56",
-    ),
-).let { list -> (1..10).flatMap { list } }
-
 @Preview(showBackground = true)
 @Composable
 private fun GreetingPreview() {
-    Screen(
-        previewChatRooms,
-    )
+    Screen(previewChatRooms)
 }
+
+val previewChatRooms = listOf(
+    ChatRoom(
+        id = 1,
+        title = "title",
+        profile = "https://i.pravatar.cc/150?img=1",
+        lastMessage = "lastMessage",
+        lastMessageTime = "lastMessageTime",
+        messageCount = 1,
+        status = "status",
+    ),
+    ChatRoom(
+        id = 2,
+        title = "거지방",
+        profile = "https://i.pravatar.cc/150?img=2",
+        lastMessage = "안녕하세요!\n공지확인해주시고 들낙금지ㅜㅜ...",
+        lastMessageTime = "오후 7:06",
+        messageCount = 2,
+        status = "status",
+    ),
+    ChatRoom(
+        id = 3,
+        title = "어플(앱)을 연구하는 사람들-안드로이드,IOS,개발자",
+        profile = "https://i.pravatar.cc/150?img=3",
+        lastMessage = "그냥 안채우는ㅋㅋㅋ",
+        lastMessageTime = "오후 6:18",
+        messageCount = 3,
+        status = "status",
+    ),
+    ChatRoom(
+        id = 4,
+        title = "BoB 총동문회: 소식방",
+        profile = "https://i.pravatar.cc/150?img=4",
+        lastMessage = "<쿠팡 로지스틱스 개인정보보호 8년 이상 경력직 채용>\n[CLS] Privacy 담당자 채용...",
+        lastMessageTime = "오후 5:56",
+        messageCount = 4,
+        status = "status",
+    ),
+    ChatRoom(
+        id = 5,
+        title = "카카오페이",
+        profile = "https://i.pravatar.cc/150?img=5",
+        lastMessage = "결제가 완료되었어요.\n....",
+        lastMessageTime = "오후 5:56",
+        messageCount = 5,
+        status = "status",
+    ),
+).let { list -> (1..10).flatMap { list } }

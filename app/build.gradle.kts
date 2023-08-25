@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.re4rk.oneApp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.re4rk.oneApp"
         minSdk = 28
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -76,6 +76,8 @@ dependencies {
 
     // lifecycle
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0-alpha01")
 
     // glide
     implementation("com.github.bumptech.glide:glide:4.15.1")
@@ -93,6 +95,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation(project(mapOf("path" to ":domain")))
 
     // junit4
     testImplementation("junit:junit:4.13.2")
@@ -124,4 +127,7 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // glide
+    implementation("com.github.skydoves:landscapist-glide:1.4.7")
 }
