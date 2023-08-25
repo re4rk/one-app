@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "oneApp"
-include ':app'
+include ':presentation'
 include ':domain'
