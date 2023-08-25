@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
     id("kotlin-kapt")
@@ -7,15 +7,12 @@ plugins {
 }
 
 android {
-    namespace = "com.re4rk.oneApp"
+    namespace = "com.re4rk.presentation"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.re4rk.oneApp"
         minSdk = 28
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -130,4 +127,9 @@ dependencies {
 
     // glide
     implementation("com.github.skydoves:landscapist-glide:1.4.7")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.47")
+    kapt("com.google.dagger:hilt-android-compiler:2.47")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
 }

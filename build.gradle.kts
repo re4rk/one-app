@@ -9,3 +9,13 @@ plugins {
     kotlin("jvm") version kotlinVersion apply false
     id("org.jlleitschuh.gradle.ktlint") version "11.1.0" apply false
 }
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.47")
+    }
+}

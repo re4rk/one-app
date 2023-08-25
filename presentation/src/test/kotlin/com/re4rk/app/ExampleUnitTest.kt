@@ -1,4 +1,4 @@
-package com.re4rk.oneApp
+package com.re4rk.app
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
