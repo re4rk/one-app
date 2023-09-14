@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class PracticeInMemoryRepository : PracticeRepository {
-    private val practices = mutableListOf<Practice>()
+    private val practices = MutableList<Practice>(20) { Practice() }
 
     override fun getPractices(): Flow<List<Practice>> = flow {
         emit(practices.toList())
