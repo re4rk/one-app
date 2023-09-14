@@ -25,7 +25,6 @@ object ApiModule {
     @Provides
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
 
-    @Singleton
     @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient,

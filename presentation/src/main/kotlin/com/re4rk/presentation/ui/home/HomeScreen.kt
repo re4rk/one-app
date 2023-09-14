@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.re4rk.presentation.ui.chatRoomList.ChatRoomListActivity
+import com.re4rk.presentation.ui.lifecycleTracker.LifecycleTackerActivity
 import com.re4rk.presentation.ui.theme.OneAppTheme
 
 @Composable
@@ -53,11 +54,15 @@ private fun Screen(contents: List<Content>) {
 @Composable
 fun previewHomeRoot() {
     HomeRoot(
-        contents = List(10) {
+        contents = listOf(
             Content(
                 intent = ChatRoomListActivity.getIntent(LocalContext.current),
                 description = "Chat Room List",
-            )
-        },
+            ),
+            Content(
+                intent = LifecycleTackerActivity.getIntent(LocalContext.current),
+                description = "Lifecycle Tracker",
+            ),
+        ),
     )
 }

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OneApp"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.lifecycleTracker.LifecycleTackerActivity"
+            android:exported="true"
+            android:label="@string/title_activity_lifecycle_tacker"
+            android:theme="@style/Theme.OneApp" />
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="true"
@@ -25,11 +29,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.re4rk.presentation.ui.chatRoomList.ChatRoomListActivity"
+            android:name=".ui.chatRoomList.ChatRoomListActivity"
             android:exported="true"
             android:label="@string/title_activity_home"
-            android:theme="@style/Theme.OneApp">
-        </activity>
+            android:theme="@style/Theme.OneApp"></activity>
     </application>
 
 </manifest>

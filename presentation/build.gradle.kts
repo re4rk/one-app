@@ -94,6 +94,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation(project(mapOf("path" to ":domain")))
+    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
 
     // junit4
     testImplementation("junit:junit:4.13.2")
@@ -123,6 +124,7 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
