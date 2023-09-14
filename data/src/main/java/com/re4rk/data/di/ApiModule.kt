@@ -2,8 +2,10 @@ package com.re4rk.data.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.re4rk.data.repository.ChatRetrofitRepository
+import com.re4rk.data.repository.PracticeInMemoryRepository
 import com.re4rk.data.service.ChatService
 import com.re4rk.domain.repository.ChatRepository
+import com.re4rk.domain.repository.PracticeRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,5 +49,11 @@ object ApiModule {
     @Provides
     fun provideChatRepository(chatService: ChatService): ChatRepository {
         return ChatRetrofitRepository(chatService)
+    }
+
+    @Singleton
+    @Provides
+    fun providePracticeRepository(): PracticeRepository {
+        return PracticeInMemoryRepository()
     }
 }
