@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.lang.Thread.sleep
 
-class ChatMockRepository : ChatRepository {
+class FakeChatRepository : ChatRepository {
     override fun getChatRooms(): Flow<List<ChatRoom>> {
         sleep(1000)
         return flow {
