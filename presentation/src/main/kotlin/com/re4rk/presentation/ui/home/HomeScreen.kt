@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -36,8 +37,12 @@ private fun HomeScreen(contents: List<Content>) = OneAppTheme(
     Scaffold(
         modifier = Modifier.fillMaxHeight(),
         content = {
-            Column {
-                contents.forEach { content -> CategoryItem(content) }
+            LazyColumn {
+                contents.forEach { content ->
+                    item {
+                        CategoryItem(content)
+                    }
+                }
             }
         },
     )
