@@ -1,6 +1,6 @@
 package com.re4rk.data.service
 
-import com.re4rk.data.model.KoGptResponse
+import com.re4rk.data.model.koGpt.KoGptResponse
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Query

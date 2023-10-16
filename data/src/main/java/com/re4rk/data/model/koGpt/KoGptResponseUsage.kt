@@ -1,4 +1,4 @@
-package com.re4rk.data.model
+package com.re4rk.data.model.koGpt
 
 import kotlinx.serialization.SerialName
 
