@@ -1,9 +1,12 @@
 package com.re4rk.presentation.ui.home
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -12,7 +15,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,24 +23,24 @@ import com.re4rk.presentation.ui.lifecycleTracker.LifecycleTackerActivity
 import com.re4rk.presentation.ui.theme.OneAppTheme
 
 @Composable
-fun HomeRoot(contents: List<Content>) {
-    Screen(contents)
+fun HomeRoute(contents: List<Content>) {
+    HomeScreen(contents)
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun Screen(contents: List<Content>) {
-    OneAppTheme {
-        Scaffold(
-            modifier = Modifier.fillMaxHeight(),
-            content = {
-                Column {
-                    contents.forEach { content -> CategoryItem(content) }
-                }
-            },
-        )
-    }
+private fun HomeScreen(contents: List<Content>) = OneAppTheme(
+    dynamicColor = false,
+) {
+    Scaffold(
+        modifier = Modifier.fillMaxHeight(),
+        content = {
+            Column {
+                contents.forEach { content -> CategoryItem(content) }
+            }
+        },
+    )
 }
 
 @Composable
@@ -47,39 +49,39 @@ private fun CategoryItem(
 ) {
     val context = LocalContext.current
 
-    Card(
+    HomeCard(
         onClick = { context.startActivity(content.intent) },
-        modifier = Modifier.padding(4.dp),
+        modifier = Modifier.padding(8.dp),
     ) {
-        Text(
-            modifier = Modifier.padding(16.dp),
-            text = content.description,
-        )
+        Column(
+            modifier = Modifier.absolutePadding(left = 16.dp),
+            verticalArrangement = Arrangement.Center,
+        ) {
+            Text(text = content.description)
+        }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun Card(
+private fun HomeCard(
     onClick: () -> Unit = { },
     modifier: Modifier = Modifier,
-    color: Color = Color(0xFFE0E0E0),
     content: @Composable () -> Unit,
 ) {
     Surface(
         onClick = onClick,
-        modifier = modifier.fillMaxWidth(),
-        color = color,
-        shape = RoundedCornerShape(32.dp),
-        shadowElevation = 2.dp,
+        modifier = modifier.fillMaxWidth().height(64.dp),
+        shape = RoundedCornerShape(12.dp),
+        tonalElevation = 4.dp,
         content = content,
     )
 }
 
 @Preview
 @Composable
-fun previewHomeRoot() {
-    HomeRoot(
+fun previewHomeSuccess() {
+    HomeRoute(
         contents = listOf(
             Content(
                 intent = ChatRoomListActivity.getIntent(LocalContext.current),

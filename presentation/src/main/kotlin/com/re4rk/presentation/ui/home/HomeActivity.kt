@@ -12,22 +12,25 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val contents = listOf(
-            Content(
-                intent = ChatRoomListActivity.getIntent(this),
-                description = "Chat Room List",
-            ),
-            Content(
-                intent = LifecycleTackerActivity.getIntent(this),
-                description = "Lifecycle Tacker Room List",
-            ),
-            Content(
-                intent = DiPracticeActivity.getIntent(this),
-                description = "DI Practice",
-            ),
-        )
+        val contents = (0..10).flatMap {
+            listOf(
+                Content(
+                    intent = ChatRoomListActivity.getIntent(this),
+                    description = "Chat Room List",
+                ),
+                Content(
+                    intent = LifecycleTackerActivity.getIntent(this),
+                    description = "Lifecycle Tacker Room List",
+                ),
+                Content(
+                    intent = DiPracticeActivity.getIntent(this),
+                    description = "DI Practice",
+                ),
+            )
+        }
+
         setContent {
-            HomeRoot(contents)
+            HomeRoute(contents)
         }
     }
 }
