@@ -10,6 +10,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import javax.inject.Qualifier
 import javax.inject.Singleton
@@ -17,6 +19,10 @@ import javax.inject.Singleton
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 private annotation class KakaoBrainUrlQualifier
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+private annotation class KakaoBrainOkHttpClientQualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
@@ -30,11 +36,33 @@ object KakaoModule {
     @Provides
     fun provideKoGptUrl() = "https://api.kakaobrain.com"
 
+    @KakaoBrainOkHttpClientQualifier
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+        .addNetworkInterceptor(
+            HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY },
+        )
+        .addNetworkInterceptor(
+            HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.HEADERS },
+        )
+        .addNetworkInterceptor(
+            HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC },
+        )
+        .addNetworkInterceptor(
+            HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.NONE },
+        )
+        .build()
+
     @KakaoBrainRetrofitQualifier
     @Provides
-    fun provideKakaoRetrofit(@KakaoBrainUrlQualifier baseUrl: String): Retrofit {
+    fun provideKakaoRetrofit(
+        @KakaoBrainUrlQualifier baseUrl: String,
+        @KakaoBrainOkHttpClientQualifier okHttpClient: OkHttpClient,
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
+            .client(okHttpClient)
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
     }

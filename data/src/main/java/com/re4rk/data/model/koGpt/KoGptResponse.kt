@@ -2,7 +2,9 @@ package com.re4rk.data.model.koGpt
 
 import com.re4rk.domain.model.KoGpt
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class KoGptResponse(
     @SerialName("generations") val generations: List<KoGptResponseGeneration>,
     @SerialName("id") val id: String,
