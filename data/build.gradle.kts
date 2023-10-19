@@ -10,6 +10,10 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+tasks.test {
+    useJUnitPlatform()
+}
+
 dependencies {
     // module
     implementation(project(mapOf("path" to ":domain")))
@@ -32,4 +36,10 @@ dependencies {
     // okhttp
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // Junit5
+    testImplementation("org.junit.jupiter", "junit-jupiter", "5.6.2")
+
+    // assertj
+    testImplementation("org.assertj:assertj-core:3.24.2")
 }
