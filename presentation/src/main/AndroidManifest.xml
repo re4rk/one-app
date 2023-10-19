@@ -23,6 +23,11 @@
             android:label="@string/title_activity_lifecycle_tacker"
             android:theme="@style/Theme.OneApp" />
         <activity
+            android:name=".ui.memo.MemoActivity"
+            android:exported="false"
+            android:label="@string/title_activity_memo"
+            android:theme="@style/Theme.OneApp" />
+        <activity
             android:name=".ui.home.HomeActivity"
             android:exported="true"
             android:label="@string/title_activity_home"
