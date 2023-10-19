@@ -3,7 +3,6 @@ package com.re4rk.data.service
 import com.re4rk.data.di.KakaoModule
 import com.re4rk.data.model.koGpt.KoGptRequest
 import kotlinx.coroutines.runBlocking
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class KoGptServiceTest {
@@ -14,11 +13,6 @@ class KoGptServiceTest {
             KakaoModule.provideOkHttpClient(),
         ),
     )
-
-    @Test
-    fun aasdasd() {
-        assertThat(1).isEqualTo(1)
-    }
 
     @Test
     fun testPostChat() {
