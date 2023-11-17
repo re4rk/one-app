@@ -31,6 +31,7 @@ dependencies {
     // dagger
     implementation("javax.inject:javax.inject:1")
     implementation("com.google.dagger:hilt-core:2.47")
+    implementation("androidx.room:room-common:2.6.0")
     kapt("com.google.dagger:hilt-compiler:2.47")
 
     // okhttp
