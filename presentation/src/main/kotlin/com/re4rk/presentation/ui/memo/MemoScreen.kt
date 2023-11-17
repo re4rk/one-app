@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -17,7 +18,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,7 +42,7 @@ private fun Screen(memos: List<Memo>) {
             LazyColumn {
                 memos.forEach { memo ->
                     item {
-                        Card(memo = memo)
+                        MemoCard(memo = memo)
                     }
                 }
             }
@@ -52,48 +52,49 @@ private fun Screen(memos: List<Memo>) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun Card(
+private fun MemoCard(
     onClick: () -> Unit = { },
     modifier: Modifier = Modifier,
-    color: Color = Color(0xFFE0E0E0),
     memo: Memo,
 ) {
-    Surface(
+    Card(
         onClick = onClick,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth()
             .padding(
                 horizontal = 12.dp,
                 vertical = 8.dp,
             ),
-        color = color,
         shape = RoundedCornerShape(16.dp),
-        shadowElevation = 2.dp,
-        content = {
-            Column {
+    ) {
+        Column {
+            Text(
+                text = memo.title,
+                modifier = Modifier
+                    .padding(12.dp),
+                maxLines = 1,
+                style = MaterialTheme.typography.headlineSmall,
+
+                overflow = TextOverflow.Ellipsis,
+            )
+
+            Divider(
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier.padding(horizontal = 8.dp),
+            )
+
+            Box(modifier = Modifier.wrapContentHeight()) {
                 Text(
-                    text = "HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello ${memo.title}!",
+                    text = memo.content,
                     modifier = Modifier
-                        .padding(12.dp),
-                    maxLines = 1,
-                    style = MaterialTheme.typography.headlineSmall,
-
-                    overflow = TextOverflow.Ellipsis,
+                        .padding(12.dp)
+                        .wrapContentWidth(),
+                    style = MaterialTheme.typography.bodyLarge,
                 )
-
-                Divider(thickness = 1.dp, modifier = Modifier.padding(horizontal = 8.dp))
-
-                Box(modifier = Modifier.wrapContentHeight()) {
-                    Text(
-                        text = "HeaaaaaaaaaaaaaaaaaaaaaaaalloHeaaaaaaaaaaaaaaaaaaaaaaaallo ${memo.content}!",
-                        modifier = Modifier
-                            .padding(12.dp)
-                            .wrapContentWidth(),
-                        style = MaterialTheme.typography.bodyLarge,
-                    )
-                }
             }
-        },
-    )
+        }
+    }
 }
 
 @Preview(showBackground = true)
