@@ -32,15 +32,27 @@ import com.re4rk.presentation.designSystem.component.ArkTopAppBar
 import com.re4rk.presentation.ui.theme.OneAppTheme
 
 @Composable
-fun MemoScreen(vm: MemoViewModel) {
+fun MemoScreen(
+    onNavigationClick: () -> Unit = { },
+    onActionClick: () -> Unit = { },
+    vm: MemoViewModel,
+) {
     val memos: List<Memo> by vm.memo.collectAsStateWithLifecycle()
 
-    Screen(memos = memos)
+    Screen(
+        onNavigationClick = onNavigationClick,
+        onActionClick = onActionClick,
+        memos = memos,
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun Screen(memos: List<Memo>) {
+private fun Screen(
+    onNavigationClick: () -> Unit,
+    onActionClick: () -> Unit,
+    memos: List<Memo>,
+) {
     OneAppTheme {
         Scaffold(
             topBar = {
@@ -50,8 +62,8 @@ private fun Screen(memos: List<Memo>) {
                     navigationIconContentDescription = null,
                     actionIcon = Icons.Default.Menu,
                     actionIconContentDescription = null,
-                    onNavigationClick = { },
-                    onActionClick = { },
+                    onNavigationClick = onNavigationClick,
+                    onActionClick = onActionClick,
                 )
             },
         ) { innerPadding ->
@@ -124,6 +136,8 @@ private fun MemoCard(
 @Composable
 fun GreetingPreview() {
     Screen(
+        onActionClick = {},
+        onNavigationClick = {},
         memos = List(20) {
             Memo(
                 id = it,

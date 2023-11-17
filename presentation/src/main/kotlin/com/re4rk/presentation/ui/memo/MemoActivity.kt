@@ -15,7 +15,11 @@ class MemoActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MemoScreen(vm)
+            MemoScreen(
+                { finish() },
+                { /* TODO */ },
+                vm,
+            )
         }
     }
 
