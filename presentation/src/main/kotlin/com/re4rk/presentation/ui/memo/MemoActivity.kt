@@ -18,6 +18,7 @@ class MemoActivity : ComponentActivity() {
             MemoScreen(
                 { finish() },
                 { /* TODO */ },
+                { vm.addMemo(it) },
                 vm,
             )
         }

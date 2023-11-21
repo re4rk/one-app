@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -19,8 +20,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,6 +39,7 @@ import com.re4rk.presentation.ui.theme.OneAppTheme
 fun MemoScreen(
     onNavigationClick: () -> Unit = { },
     onActionClick: () -> Unit = { },
+    onSubmit: (String) -> Unit = { },
     vm: MemoViewModel,
 ) {
     val memos: List<Memo> by vm.memo.collectAsStateWithLifecycle()
@@ -42,6 +47,7 @@ fun MemoScreen(
     Screen(
         onNavigationClick = onNavigationClick,
         onActionClick = onActionClick,
+        onSubmit = onSubmit,
         memos = memos,
     )
 }
@@ -51,6 +57,7 @@ fun MemoScreen(
 private fun Screen(
     onNavigationClick: () -> Unit,
     onActionClick: () -> Unit,
+    onSubmit: (String) -> Unit,
     memos: List<Memo>,
 ) {
     OneAppTheme {
@@ -65,6 +72,25 @@ private fun Screen(
                     onNavigationClick = onNavigationClick,
                     onActionClick = onActionClick,
                 )
+            },
+            bottomBar = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                ) {
+                    val text = remember { mutableStateOf("") }
+                    TextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(40.dp),
+                        value = text.value,
+                        onValueChange = {
+                            text.value = it
+                            onSubmit(it)
+                        },
+                    )
+                }
             },
         ) { innerPadding ->
             Surface(
@@ -138,6 +164,7 @@ fun GreetingPreview() {
     Screen(
         onActionClick = {},
         onNavigationClick = {},
+        onSubmit = {},
         memos = List(20) {
             Memo(
                 id = it,
