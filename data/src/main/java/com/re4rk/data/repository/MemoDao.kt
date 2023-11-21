@@ -13,4 +13,7 @@ interface MemoDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertMemoEntity(memoEntity: MemoEntity)
+
+    @Query("DELETE FROM memos")
+    suspend fun deleteMemos()
 }

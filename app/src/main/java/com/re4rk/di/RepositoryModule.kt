@@ -1,6 +1,7 @@
 package com.re4rk.di
 
-import com.re4rk.data.repository.DefaultMemoRepository
+import com.re4rk.data.repository.MemoDao
+import com.re4rk.data.repository.OfflineFirstMemoRepository
 import com.re4rk.domain.repository.MemoRepository
 import dagger.Module
 import dagger.Provides
@@ -13,5 +14,6 @@ import javax.inject.Singleton
 class RepositoryModule {
     @Singleton
     @Provides
-    fun provideMemoRepository(): MemoRepository = DefaultMemoRepository()
+    fun provideMemoRepository(memoDao: MemoDao): MemoRepository =
+        OfflineFirstMemoRepository(memoDao)
 }

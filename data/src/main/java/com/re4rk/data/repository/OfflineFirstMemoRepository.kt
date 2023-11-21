@@ -2,11 +2,11 @@ package com.re4rk.data.repository
 
 import com.re4rk.domain.model.Memo
 import com.re4rk.domain.repository.MemoRepository
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.transform
 
 class OfflineFirstMemoRepository(
     private val memoDao: MemoDao,
-    private val defaultMemoRepository: DefaultMemoRepository,
 ) : MemoRepository {
     override fun getMemos() = memoDao.getMemoEntities()
         .transform { memoEntities ->
@@ -14,11 +14,10 @@ class OfflineFirstMemoRepository(
         }
 
     override suspend fun insertMemo(memo: Memo) {
-        defaultMemoRepository.getMemos().collect { memos ->
-            println("memos: $memos")
-            memos.forEach {
-                memoDao.insertMemoEntity(MemoEntity.from(it))
-            }
-        }
+        memoDao.insertMemoEntity(MemoEntity.from(memo))
+    }
+
+    override suspend fun deleteMemos() {
+        memoDao.deleteMemos()
     }
 }
