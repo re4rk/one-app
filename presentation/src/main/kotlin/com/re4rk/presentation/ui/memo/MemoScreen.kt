@@ -1,7 +1,11 @@
 package com.re4rk.presentation.ui.memo
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -12,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
@@ -40,6 +45,7 @@ fun MemoScreen(
     onNavigationClick: () -> Unit = { },
     onActionClick: () -> Unit = { },
     onSubmit: (String) -> Unit = { },
+    onDelete: (Int) -> Unit = { },
     vm: MemoViewModel,
 ) {
     val memos: List<Memo> by vm.memo.collectAsStateWithLifecycle()
@@ -48,6 +54,7 @@ fun MemoScreen(
         onNavigationClick = onNavigationClick,
         onActionClick = onActionClick,
         onSubmit = onSubmit,
+        onDelete = onDelete,
         memos = memos,
     )
 }
@@ -58,6 +65,7 @@ private fun Screen(
     onNavigationClick: () -> Unit,
     onActionClick: () -> Unit,
     onSubmit: (String) -> Unit,
+    onDelete: (Int) -> Unit,
     memos: List<Memo>,
 ) {
     OneAppTheme {
@@ -83,7 +91,7 @@ private fun Screen(
                     TextField(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(40.dp),
+                            .height(64.dp),
                         value = text.value,
                         onValueChange = {
                             text.value = it
@@ -102,7 +110,10 @@ private fun Screen(
                 LazyColumn {
                     memos.forEach { memo ->
                         item {
-                            MemoCard(memo = memo)
+                            MemoCard(
+                                memo = memo,
+                                onDelete = onDelete,
+                            )
                         }
                     }
                 }
@@ -117,6 +128,7 @@ private fun MemoCard(
     onClick: () -> Unit = { },
     modifier: Modifier = Modifier,
     memo: Memo,
+    onDelete: (Int) -> Unit = { },
 ) {
     Card(
         onClick = onClick,
@@ -129,15 +141,26 @@ private fun MemoCard(
         shape = RoundedCornerShape(16.dp),
     ) {
         Column {
-            Text(
-                text = memo.title,
+            Row(
                 modifier = Modifier
                     .padding(12.dp),
-                maxLines = 1,
-                style = MaterialTheme.typography.headlineSmall,
-
-                overflow = TextOverflow.Ellipsis,
-            )
+            ) {
+                Text(
+                    text = memo.title,
+                    maxLines = 1,
+                    style = MaterialTheme.typography.headlineSmall,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Spacer(
+                    modifier = Modifier
+                        .weight(1f),
+                )
+                Image(
+                    imageVector = Icons.Default.Close,
+                    contentDescription = null,
+                    modifier = modifier.clickable { onDelete(memo.id) },
+                )
+            }
 
             Divider(
                 thickness = 1.dp,
@@ -165,6 +188,7 @@ fun GreetingPreview() {
         onActionClick = {},
         onNavigationClick = {},
         onSubmit = {},
+        onDelete = {},
         memos = List(20) {
             Memo(
                 id = it,

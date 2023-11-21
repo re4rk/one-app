@@ -26,4 +26,10 @@ class MemoViewModel @Inject constructor(
             memoRepository.insertMemo(Memo(title = string, content = string))
         }
     }
+
+    fun deleteMemo(id: Int) {
+        viewModelScope.launch {
+            memoRepository.deleteMemo(id)
+        }
+    }
 }
