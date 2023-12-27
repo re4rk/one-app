@@ -2,6 +2,7 @@ package com.re4rk.presentation.ui.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -48,10 +50,28 @@ private fun HomeScreen(contents: List<Content>) = OneAppTheme(
 
 @Composable
 private fun HomeScreenContent(contents: List<Content>) {
-    LazyVerticalGrid(columns = GridCells.Adaptive(minSize = 128.dp)) {
-        contents.forEach { content ->
-            item {
-                CategoryItem(content = content)
+    Column {
+        Text(
+            text = "SandBox",
+            style = MaterialTheme.typography.headlineLarge,
+            modifier = Modifier.padding(16.dp),
+        )
+
+        LazyVerticalGrid(
+            modifier = Modifier
+                .padding(8.dp)
+                .background(
+                    MaterialTheme.colorScheme.primaryContainer,
+                    shape = RoundedCornerShape(12.dp),
+                )
+                .padding(8.dp)
+                .height(400.dp),
+            columns = GridCells.Adaptive(minSize = 128.dp),
+        ) {
+            contents.forEach { content ->
+                item {
+                    CategoryItem(content = content)
+                }
             }
         }
     }
