@@ -2,6 +2,7 @@ package com.re4rk.app
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -11,9 +12,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
 import com.re4rk.navigation.TopLevelDestination
 import com.re4rk.presentation.designSystem.component.ArkNavigationBar
 import com.re4rk.presentation.designSystem.component.ArkNavigationBarItem
@@ -31,13 +32,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val navController = rememberNavController()
+            val oneAppState = rememberOneAppState()
 
             Scaffold(
-                bottomBar = { MainScreenBottomBar(navController) },
+                bottomBar = { MainScreenBottomBar(oneAppState) },
             ) {
                 NavHost(
-                    navController = navController,
+                    navController = oneAppState.navController,
                     startDestination = homeNavigationRoute,
                 ) {
                     homeScreen()
@@ -49,19 +50,22 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun MainScreenBottomBar(
-        navController: NavController,
+        oneAppState: OneAppState,
     ) = ArkNavigationBar(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight(),
     ) {
-        TopLevelDestination.values().forEach { destination ->
+        oneAppState.topLevelDestinations.forEach { destination ->
+            val selected =
+                oneAppState.currentDestination.isTopLevelDestinationInHierarchy(destination)
+
             ArkNavigationBarItem(
-                selected = false,
+                selected = selected,
                 onClick = {
                     when (destination) {
-                        TopLevelDestination.HOME -> navController.navigateToHome()
-                        TopLevelDestination.MENU -> navController.navigateToMenu()
+                        TopLevelDestination.HOME -> oneAppState.navController.navigateToHome()
+                        TopLevelDestination.MENU -> oneAppState.navController.navigateToMenu()
                     }
                 },
                 icon = {
@@ -76,4 +80,10 @@ class MainActivity : ComponentActivity() {
             )
         }
     }
+
+    private fun NavDestination?.isTopLevelDestinationInHierarchy(destination: TopLevelDestination) =
+        this?.hierarchy?.any {
+            Log.d("MainActivity", "isTopLevelDestinationInHierarchy: ${it.route}")
+            it.route?.contains(destination.name, true) ?: false
+        } ?: false
 }
