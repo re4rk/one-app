@@ -86,6 +86,8 @@ dependencies {
     // kotlin-serialization
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
+
+    // compose
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
@@ -95,6 +97,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation(project(mapOf("path" to ":domain")))
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    implementation("androidx.navigation:navigation-runtime-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
 
     // junit4
     testImplementation("junit:junit:4.13.2")
