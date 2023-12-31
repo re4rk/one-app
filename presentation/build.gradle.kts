@@ -100,6 +100,9 @@ dependencies {
     implementation("androidx.navigation:navigation-runtime-ktx:2.7.6")
     implementation("androidx.navigation:navigation-compose:2.7.6")
 
+    // hiltViewModel compose
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
     // junit4
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.test.ext:junit:1.1.5")
