@@ -1,5 +1,6 @@
 package com.re4rk.presentation.ui.diPractice
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,8 +19,8 @@ class DiPracticeActivity : ComponentActivity() {
     }
 
     companion object {
-        fun getIntent(activity: ComponentActivity) = DiPracticeActivity::class.java.let {
-            android.content.Intent(activity, it)
+        fun getIntent(context: Context) = DiPracticeActivity::class.java.let {
+            android.content.Intent(context, it)
         }
     }
 }

@@ -19,7 +19,7 @@ fun NavController.navigateToHome(navOptions: NavOptions? = null) {
     this.navigate(homeNavigationRoute, navOptions)
 }
 
-fun NavGraphBuilder.homeScreen(contents: List<Content>) {
+fun NavGraphBuilder.homeScreen() {
     composable(
         route = homeNavigationRoute,
         deepLinks = listOf(
@@ -29,6 +29,6 @@ fun NavGraphBuilder.homeScreen(contents: List<Content>) {
             navArgument(LINKED_NEWS_RESOURCE_ID) { type = NavType.StringType },
         ),
     ) {
-        HomeRoute(contents)
+        HomeRoute()
     }
 }
