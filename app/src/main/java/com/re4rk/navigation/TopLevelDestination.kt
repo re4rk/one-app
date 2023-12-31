@@ -37,4 +37,10 @@ enum class TopLevelDestination(
         iconTextId = presentationR.string.home,
         titleTextId = presentationR.string.home,
     ),
+    MENU(
+        selectedIcon = ArkIcons.Menu,
+        unselectedIcon = ArkIcons.Menu,
+        iconTextId = presentationR.string.menu,
+        titleTextId = presentationR.string.menu,
+    ),
 }

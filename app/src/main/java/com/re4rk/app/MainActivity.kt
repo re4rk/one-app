@@ -7,8 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +20,8 @@ import com.re4rk.presentation.designSystem.component.ArkNavigationBarItem
 import com.re4rk.presentation.ui.home.navigation.homeNavigationRoute
 import com.re4rk.presentation.ui.home.navigation.homeScreen
 import com.re4rk.presentation.ui.home.navigation.navigateToHome
+import com.re4rk.presentation.ui.menu.navigation.menuScreen
+import com.re4rk.presentation.ui.menu.navigation.navigateToMenu
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -41,6 +41,7 @@ class MainActivity : ComponentActivity() {
                     startDestination = homeNavigationRoute,
                 ) {
                     homeScreen()
+                    menuScreen()
                 }
             }
         }
@@ -56,17 +57,16 @@ class MainActivity : ComponentActivity() {
     ) {
         TopLevelDestination.values().forEach { destination ->
             ArkNavigationBarItem(
-                selected = true,
+                selected = false,
                 onClick = {
                     when (destination) {
-                        TopLevelDestination.HOME -> {
-                            navController.navigateToHome()
-                        }
+                        TopLevelDestination.HOME -> navController.navigateToHome()
+                        TopLevelDestination.MENU -> navController.navigateToMenu()
                     }
                 },
                 icon = {
                     Image(
-                        imageVector = Icons.Default.Close,
+                        imageVector = destination.unselectedIcon,
                         contentDescription = null,
                     )
                 },
