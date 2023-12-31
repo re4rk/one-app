@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.re4rk.app.ui.theme.OneAppTheme
 import com.re4rk.navigation.TopLevelDestination
 import com.re4rk.presentation.designSystem.component.ArkNavigationBar
 import com.re4rk.presentation.designSystem.component.ArkNavigationBarItem
@@ -37,16 +36,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
 
-            OneAppTheme {
-                Scaffold(
-                    bottomBar = { MainScreenBottomBar(navController) },
+            Scaffold(
+                bottomBar = { MainScreenBottomBar(navController) },
+            ) {
+                NavHost(
+                    navController = navController,
+                    startDestination = homeNavigationRoute,
                 ) {
-                    NavHost(
-                        navController = navController,
-                        startDestination = homeNavigationRoute,
-                    ) {
-                        homeScreen(contents = getFakeHomeScreenContents(this@MainActivity))
-                    }
+                    homeScreen(contents = getFakeHomeScreenContents(this@MainActivity))
                 }
             }
         }
