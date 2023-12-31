@@ -11,24 +11,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
-    fun getHomeScreenContents(context: Context) = (0..10).flatMap {
-        listOf(
-            Content(
-                intent = ChatRoomListActivity.getIntent(context),
-                description = "Chat Room List",
-            ),
-            Content(
-                intent = LifecycleTackerActivity.getIntent(context),
-                description = "Lifecycle Tacker Room List",
-            ),
-            Content(
-                intent = DiPracticeActivity.getIntent(context),
-                description = "DI Practice",
-            ),
-            Content(
-                intent = MemoActivity.getIntent(context),
-                description = "Memo",
-            ),
-        )
-    }
+    fun getHomeScreenContents(context: Context) = listOf(
+        Content(
+            intent = ChatRoomListActivity.getIntent(context),
+            description = "Chat Room List",
+        ),
+        Content(
+            intent = LifecycleTackerActivity.getIntent(context),
+            description = "Lifecycle Tacker Room List",
+        ),
+        Content(
+            intent = DiPracticeActivity.getIntent(context),
+            description = "DI Practice",
+        ),
+        Content(
+            intent = MemoActivity.getIntent(context),
+            description = "Memo",
+        ),
+    )
 }
