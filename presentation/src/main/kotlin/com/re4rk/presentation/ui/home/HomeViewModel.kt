@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.re4rk.presentation.ui.chatRoomList.ChatRoomListActivity
 import com.re4rk.presentation.ui.diPractice.DiPracticeActivity
 import com.re4rk.presentation.ui.lifecycleTracker.LifecycleTackerActivity
-import com.re4rk.presentation.ui.memo.MemoActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -23,10 +22,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
         Content(
             intent = DiPracticeActivity.getIntent(context),
             description = "DI Practice",
-        ),
-        Content(
-            intent = MemoActivity.getIntent(context),
-            description = "Memo",
         ),
     )
 }

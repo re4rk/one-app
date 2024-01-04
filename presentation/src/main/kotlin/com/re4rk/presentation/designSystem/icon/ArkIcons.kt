@@ -7,6 +7,7 @@ import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Person
@@ -25,4 +26,5 @@ object ArkIcons {
     val Search = Icons.Rounded.Search
     val Settings = Icons.Rounded.Settings
     val Menu = Icons.Rounded.Menu
+    val Memo = Icons.Rounded.DateRange
 }

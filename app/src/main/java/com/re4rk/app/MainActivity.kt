@@ -21,6 +21,8 @@ import com.re4rk.presentation.designSystem.component.ArkNavigationBarItem
 import com.re4rk.presentation.ui.home.navigation.homeNavigationRoute
 import com.re4rk.presentation.ui.home.navigation.homeScreen
 import com.re4rk.presentation.ui.home.navigation.navigateToHome
+import com.re4rk.presentation.ui.memo.navigation.memoScreen
+import com.re4rk.presentation.ui.memo.navigation.navigateToMemo
 import com.re4rk.presentation.ui.menu.navigation.menuScreen
 import com.re4rk.presentation.ui.menu.navigation.navigateToMenu
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +43,7 @@ class MainActivity : ComponentActivity() {
                     navController = oneAppState.navController,
                     startDestination = homeNavigationRoute,
                 ) {
+                    memoScreen()
                     homeScreen()
                     menuScreen()
                 }
@@ -66,6 +69,7 @@ class MainActivity : ComponentActivity() {
                     when (destination) {
                         TopLevelDestination.HOME -> oneAppState.navController.navigateToHome()
                         TopLevelDestination.MENU -> oneAppState.navController.navigateToMenu()
+                        TopLevelDestination.MEMO -> oneAppState.navController.navigateToMemo()
                     }
                 },
                 icon = {

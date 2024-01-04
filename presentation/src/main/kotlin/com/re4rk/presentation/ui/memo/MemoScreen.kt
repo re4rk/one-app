@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -26,7 +25,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.re4rk.domain.model.Memo
 import com.re4rk.presentation.R
@@ -43,27 +42,23 @@ import com.re4rk.presentation.designSystem.component.ArkTopAppBar
 import com.re4rk.presentation.ui.theme.OneAppTheme
 
 @Composable
-fun MemoScreen(
-    onNavigationClick: () -> Unit = { },
-    onActionClick: () -> Unit = { },
-    onSubmit: (String) -> Unit = { },
-    onDelete: (Int) -> Unit = { },
-    vm: MemoViewModel,
+fun MemoRoute(
+    vm: MemoViewModel = hiltViewModel(),
 ) {
     val memos: List<Memo> by vm.memo.collectAsStateWithLifecycle()
 
-    Screen(
-        onNavigationClick = onNavigationClick,
-        onActionClick = onActionClick,
-        onSubmit = onSubmit,
-        onDelete = onDelete,
+    MemoScreen(
+        onNavigationClick = { /* TODO */ },
+        onActionClick = { /* TODO */ },
+        onSubmit = { vm.addMemo(it) },
+        onDelete = { vm.deleteMemo(it) },
         memos = memos,
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun Screen(
+private fun MemoScreen(
     onNavigationClick: () -> Unit,
     onActionClick: () -> Unit,
     onSubmit: (String) -> Unit,
@@ -90,16 +85,16 @@ private fun Screen(
                         .padding(8.dp),
                 ) {
                     val text = remember { mutableStateOf("") }
-                    TextField(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(64.dp),
-                        value = text.value,
-                        onValueChange = {
-                            text.value = it
-                            onSubmit(it)
-                        },
-                    )
+//                    TextField(
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//                            .height(64.dp),
+//                        value = text.value,
+//                        onValueChange = {
+//                            text.value = it
+//                            onSubmit(it)
+//                        },
+//                    )
 
                     Button(
                         onClick = { onSubmit(text.value) },
@@ -193,7 +188,7 @@ private fun MemoCard(
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Screen(
+    MemoScreen(
         onActionClick = {},
         onNavigationClick = {},
         onSubmit = {},

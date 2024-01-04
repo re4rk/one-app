@@ -31,6 +31,12 @@ enum class TopLevelDestination(
     val iconTextId: Int,
     val titleTextId: Int,
 ) {
+    MEMO(
+        selectedIcon = ArkIcons.Memo,
+        unselectedIcon = ArkIcons.Memo,
+        iconTextId = presentationR.string.memo,
+        titleTextId = presentationR.string.memo,
+    ),
     HOME(
         selectedIcon = ArkIcons.Home,
         unselectedIcon = ArkIcons.Home,
