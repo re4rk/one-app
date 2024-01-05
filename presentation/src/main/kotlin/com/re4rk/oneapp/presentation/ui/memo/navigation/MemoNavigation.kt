@@ -1,10 +1,10 @@
-package com.re4rk.presentation.ui.memo.navigation
+package com.re4rk.oneapp.presentation.ui.memo.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.re4rk.presentation.ui.memo.MemoRoute
+import com.re4rk.oneapp.presentation.ui.memo.MemoRoute
 
 const val memoNavigationRoute = "meno_route"
 

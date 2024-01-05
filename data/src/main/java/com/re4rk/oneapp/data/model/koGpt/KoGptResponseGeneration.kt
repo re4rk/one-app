@@ -1,6 +1,6 @@
-package com.re4rk.data.model.koGpt
+package com.re4rk.oneapp.data.model.koGpt
 
-import com.re4rk.domain.model.KoGptGeneration
+import com.re4rk.oneapp.domain.model.KoGptGeneration
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

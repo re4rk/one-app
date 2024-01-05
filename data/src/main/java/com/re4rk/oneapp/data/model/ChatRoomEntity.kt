@@ -1,6 +1,6 @@
-package com.re4rk.data.model
+package com.re4rk.oneapp.data.model
 
-import com.re4rk.domain.model.ChatRoom
+import com.re4rk.oneapp.domain.model.ChatRoom
 import kotlinx.serialization.Serializable
 
 @Serializable

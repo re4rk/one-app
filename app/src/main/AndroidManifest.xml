@@ -4,12 +4,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".HiltApplication"
+        android:name="com.re4rk.oneapp.app.HiltApplication"
         android:allowBackup="true"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.re4rk.oneapp.app.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.OneApp" >

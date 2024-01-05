@@ -1,6 +1,6 @@
-package com.re4rk.domain.repository
+package com.re4rk.oneapp.domain.repository
 
-import com.re4rk.domain.model.Memo
+import com.re4rk.oneapp.domain.model.Memo
 import kotlinx.coroutines.flow.Flow
 
 interface MemoRepository {

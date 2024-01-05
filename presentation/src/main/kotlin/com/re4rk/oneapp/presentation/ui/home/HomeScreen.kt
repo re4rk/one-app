@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.home
+package com.re4rk.oneapp.presentation.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -25,9 +25,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.re4rk.presentation.ui.chatRoomList.ChatRoomListActivity
-import com.re4rk.presentation.ui.lifecycleTracker.LifecycleTackerActivity
-import com.re4rk.presentation.ui.theme.OneAppTheme
+import com.re4rk.oneapp.presentation.ui.chatRoomList.ChatRoomListActivity
+import com.re4rk.oneapp.presentation.ui.lifecycleTracker.LifecycleTackerActivity
+import com.re4rk.oneapp.presentation.ui.theme.OneAppTheme
 
 @Composable
 fun HomeRoute(vm: HomeViewModel = hiltViewModel()) {

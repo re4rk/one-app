@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.diPractice
+package com.re4rk.oneapp.presentation.ui.diPractice
 
 import android.content.Context
 import android.os.Bundle

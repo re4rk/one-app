@@ -1,10 +1,10 @@
-package com.re4rk.presentation.ui.chatRoomList
+package com.re4rk.oneapp.presentation.ui.chatRoomList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.re4rk.domain.usecase.GetChatRoomsUseCase
-import com.re4rk.presentation.util.Result
-import com.re4rk.presentation.util.asResult
+import com.re4rk.oneapp.domain.usecase.GetChatRoomsUseCase
+import com.re4rk.oneapp.presentation.util.Result
+import com.re4rk.oneapp.presentation.util.asResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted

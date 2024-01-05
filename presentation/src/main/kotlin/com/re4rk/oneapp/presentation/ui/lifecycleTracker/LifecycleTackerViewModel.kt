@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.lifecycleTracker
+package com.re4rk.oneapp.presentation.ui.lifecycleTracker
 
 import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver

@@ -1,6 +1,6 @@
-package com.re4rk.data.service
+package com.re4rk.oneapp.data.service
 
-import com.re4rk.data.model.ChatRoomEntity
+import com.re4rk.oneapp.data.model.ChatRoomEntity
 import retrofit2.Response
 import retrofit2.http.GET
 

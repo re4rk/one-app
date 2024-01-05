@@ -1,8 +1,8 @@
-package com.re4rk.di
+package com.re4rk.oneapp.di
 
-import com.re4rk.data.repository.MemoDao
-import com.re4rk.data.repository.OfflineFirstMemoRepository
-import com.re4rk.domain.repository.MemoRepository
+import com.re4rk.oneapp.data.repository.MemoDao
+import com.re4rk.oneapp.data.repository.OfflineFirstMemoRepository
+import com.re4rk.oneapp.domain.repository.MemoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

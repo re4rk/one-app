@@ -13,17 +13,17 @@
         android:theme="@style/Theme.OneApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.diPractice.DiPracticeActivity"
+            android:name="com.re4rk.oneapp.presentation.ui.diPractice.DiPracticeActivity"
             android:exported="false"
             android:label="@string/title_activity_di_practice"
             android:theme="@style/Theme.OneApp" />
         <activity
-            android:name=".ui.lifecycleTracker.LifecycleTackerActivity"
+            android:name="com.re4rk.oneapp.presentation.ui.lifecycleTracker.LifecycleTackerActivity"
             android:exported="true"
             android:label="@string/title_activity_lifecycle_tacker"
             android:theme="@style/Theme.OneApp" />
         <activity
-            android:name=".ui.chatRoomList.ChatRoomListActivity"
+            android:name="com.re4rk.oneapp.presentation.ui.chatRoomList.ChatRoomListActivity"
             android:exported="true"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.OneApp" />

@@ -1,9 +1,9 @@
-package com.re4rk.data.di
+package com.re4rk.oneapp.data.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.re4rk.data.repository.DefaultKoGptRepository
-import com.re4rk.data.service.KoGptService
-import com.re4rk.domain.repository.KoGptRepository
+import com.re4rk.oneapp.data.repository.DefaultKoGptRepository
+import com.re4rk.oneapp.data.service.KoGptService
+import com.re4rk.oneapp.domain.repository.KoGptRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

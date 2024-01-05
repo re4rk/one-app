@@ -1,8 +1,8 @@
-package com.re4rk.data.repository
+package com.re4rk.oneapp.data.repository
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.re4rk.domain.model.Memo
+import com.re4rk.oneapp.domain.model.Memo
 
 @Entity(tableName = "memos")
 data class MemoEntity(

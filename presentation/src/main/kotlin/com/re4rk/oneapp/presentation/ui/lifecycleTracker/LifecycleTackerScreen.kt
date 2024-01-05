@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.lifecycleTracker
+package com.re4rk.oneapp.presentation.ui.lifecycleTracker
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.re4rk.presentation.ui.theme.OneAppTheme
+import com.re4rk.oneapp.presentation.ui.theme.OneAppTheme
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable

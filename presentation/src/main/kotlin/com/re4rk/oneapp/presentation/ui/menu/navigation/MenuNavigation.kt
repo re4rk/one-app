@@ -1,10 +1,10 @@
-package com.re4rk.presentation.ui.menu.navigation
+package com.re4rk.oneapp.presentation.ui.menu.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.re4rk.presentation.ui.menu.MenuRoute
+import com.re4rk.oneapp.presentation.ui.menu.MenuRoute
 
 const val menuNavigationRoute = "menu_route"
 

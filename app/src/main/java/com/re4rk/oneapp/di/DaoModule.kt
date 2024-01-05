@@ -1,7 +1,7 @@
-package com.re4rk.di
+package com.re4rk.oneapp.di
 
-import com.re4rk.data.database.ArkDatabase
-import com.re4rk.data.repository.MemoDao
+import com.re4rk.oneapp.data.database.ArkDatabase
+import com.re4rk.oneapp.data.repository.MemoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

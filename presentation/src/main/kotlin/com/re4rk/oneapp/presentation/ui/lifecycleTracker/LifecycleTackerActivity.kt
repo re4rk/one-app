@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.lifecycleTracker
+package com.re4rk.oneapp.presentation.ui.lifecycleTracker
 
 import android.content.Context
 import android.content.Intent

@@ -1,7 +1,7 @@
-package com.re4rk.data.service
+package com.re4rk.oneapp.data.service
 
-import com.re4rk.data.di.KakaoModule
-import com.re4rk.data.model.koGpt.KoGptRequest
+import com.re4rk.oneapp.data.di.KakaoModule
+import com.re4rk.oneapp.data.model.koGpt.KoGptRequest
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 

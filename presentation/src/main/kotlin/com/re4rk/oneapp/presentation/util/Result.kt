@@ -1,4 +1,4 @@
-package com.re4rk.presentation.util
+package com.re4rk.oneapp.presentation.util
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

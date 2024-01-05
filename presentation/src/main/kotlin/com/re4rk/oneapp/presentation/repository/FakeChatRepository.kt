@@ -1,7 +1,7 @@
-package com.re4rk.presentation.repository
+package com.re4rk.oneapp.presentation.repository
 
-import com.re4rk.domain.model.ChatRoom
-import com.re4rk.domain.repository.ChatRepository
+import com.re4rk.oneapp.domain.model.ChatRoom
+import com.re4rk.oneapp.domain.repository.ChatRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.lang.Thread.sleep

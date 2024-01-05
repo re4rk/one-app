@@ -1,9 +1,9 @@
-package com.re4rk.presentation.ui.memo
+package com.re4rk.oneapp.presentation.ui.memo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.re4rk.domain.model.Memo
-import com.re4rk.domain.repository.MemoRepository
+import com.re4rk.oneapp.domain.model.Memo
+import com.re4rk.oneapp.domain.repository.MemoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

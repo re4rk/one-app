@@ -1,7 +1,7 @@
-package com.re4rk.data.repository
+package com.re4rk.oneapp.data.repository
 
-import com.re4rk.domain.model.Practice
-import com.re4rk.domain.repository.PracticeRepository
+import com.re4rk.oneapp.domain.model.Practice
+import com.re4rk.oneapp.domain.repository.PracticeRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

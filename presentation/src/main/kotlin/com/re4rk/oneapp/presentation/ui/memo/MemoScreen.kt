@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.memo
+package com.re4rk.oneapp.presentation.ui.memo
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -33,7 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.re4rk.domain.model.Memo
+import com.re4rk.oneapp.domain.model.Memo
 
 @Composable
 fun MemoRoute(

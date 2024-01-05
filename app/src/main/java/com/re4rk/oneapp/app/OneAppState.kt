@@ -1,4 +1,4 @@
-package com.re4rk.app
+package com.re4rk.oneapp.app
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
@@ -6,7 +6,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.re4rk.navigation.TopLevelDestination
+import com.re4rk.oneapp.navigation.TopLevelDestination
 
 @Composable
 fun rememberOneAppState(

@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.chatRoomList
+package com.re4rk.oneapp.presentation.ui.chatRoomList
 
 import android.content.Context
 import android.content.Intent

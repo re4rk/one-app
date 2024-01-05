@@ -1,9 +1,9 @@
-package com.re4rk.data.database
+package com.re4rk.oneapp.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.re4rk.data.repository.MemoDao
-import com.re4rk.data.repository.MemoEntity
+import com.re4rk.oneapp.data.repository.MemoDao
+import com.re4rk.oneapp.data.repository.MemoEntity
 
 @Database(
     entities = [

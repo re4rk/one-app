@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.home
+package com.re4rk.oneapp.presentation.ui.home
 
 import android.content.Intent
 

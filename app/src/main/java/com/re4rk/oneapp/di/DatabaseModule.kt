@@ -1,8 +1,8 @@
-package com.re4rk.di
+package com.re4rk.oneapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.re4rk.data.database.ArkDatabase
+import com.re4rk.oneapp.data.database.ArkDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

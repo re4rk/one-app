@@ -1,11 +1,11 @@
-package com.re4rk.data.di
+package com.re4rk.oneapp.data.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.re4rk.data.repository.ChatRetrofitRepository
-import com.re4rk.data.repository.PracticeInMemoryRepository
-import com.re4rk.data.service.ChatService
-import com.re4rk.domain.repository.ChatRepository
-import com.re4rk.domain.repository.PracticeRepository
+import com.re4rk.oneapp.data.repository.ChatRetrofitRepository
+import com.re4rk.oneapp.data.repository.PracticeInMemoryRepository
+import com.re4rk.oneapp.data.service.ChatService
+import com.re4rk.oneapp.domain.repository.ChatRepository
+import com.re4rk.oneapp.domain.repository.PracticeRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

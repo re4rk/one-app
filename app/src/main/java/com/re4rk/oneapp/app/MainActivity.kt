@@ -1,4 +1,4 @@
-package com.re4rk.app
+package com.re4rk.oneapp.app
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -20,17 +20,18 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
-import com.re4rk.navigation.TopLevelDestination
+import com.re4rk.app.R
+import com.re4rk.oneapp.navigation.TopLevelDestination
 import com.re4rk.oneapp.core.designsystem.component.ArkNavigationBar
 import com.re4rk.oneapp.core.designsystem.component.ArkNavigationBarItem
 import com.re4rk.oneapp.core.designsystem.component.ArkTopAppBar
-import com.re4rk.presentation.ui.home.navigation.homeNavigationRoute
-import com.re4rk.presentation.ui.home.navigation.homeScreen
-import com.re4rk.presentation.ui.home.navigation.navigateToHome
-import com.re4rk.presentation.ui.memo.navigation.memoScreen
-import com.re4rk.presentation.ui.memo.navigation.navigateToMemo
-import com.re4rk.presentation.ui.menu.navigation.menuScreen
-import com.re4rk.presentation.ui.menu.navigation.navigateToMenu
+import com.re4rk.oneapp.presentation.ui.home.navigation.homeNavigationRoute
+import com.re4rk.oneapp.presentation.ui.home.navigation.homeScreen
+import com.re4rk.oneapp.presentation.ui.home.navigation.navigateToHome
+import com.re4rk.oneapp.presentation.ui.memo.navigation.memoScreen
+import com.re4rk.oneapp.presentation.ui.memo.navigation.navigateToMemo
+import com.re4rk.oneapp.presentation.ui.menu.navigation.menuScreen
+import com.re4rk.oneapp.presentation.ui.menu.navigation.navigateToMenu
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

@@ -1,10 +1,10 @@
-package com.re4rk.presentation.ui.home
+package com.re4rk.oneapp.presentation.ui.home
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.re4rk.presentation.ui.chatRoomList.ChatRoomListActivity
-import com.re4rk.presentation.ui.diPractice.DiPracticeActivity
-import com.re4rk.presentation.ui.lifecycleTracker.LifecycleTackerActivity
+import com.re4rk.oneapp.presentation.ui.chatRoomList.ChatRoomListActivity
+import com.re4rk.oneapp.presentation.ui.diPractice.DiPracticeActivity
+import com.re4rk.oneapp.presentation.ui.lifecycleTracker.LifecycleTackerActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

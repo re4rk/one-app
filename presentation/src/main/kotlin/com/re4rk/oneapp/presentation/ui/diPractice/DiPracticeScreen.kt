@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.diPractice
+package com.re4rk.oneapp.presentation.ui.diPractice
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,8 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.re4rk.domain.model.Practice
-import com.re4rk.presentation.ui.theme.OneAppTheme
+import com.re4rk.oneapp.domain.model.Practice
+import com.re4rk.oneapp.presentation.ui.theme.OneAppTheme
 
 @Composable
 fun DiPracticeRoot(vm: DiPracticeViewModel) {

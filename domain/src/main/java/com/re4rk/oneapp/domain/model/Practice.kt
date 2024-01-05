@@ -1,3 +1,3 @@
-package com.re4rk.domain.model
+package com.re4rk.oneapp.domain.model
 
 class Practice

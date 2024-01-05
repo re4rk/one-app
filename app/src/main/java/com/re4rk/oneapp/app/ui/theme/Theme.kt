@@ -1,4 +1,4 @@
-package com.re4rk.app.ui.theme
+package com.re4rk.oneapp.app.ui.theme
 
 import android.app.Activity
 import android.os.Build

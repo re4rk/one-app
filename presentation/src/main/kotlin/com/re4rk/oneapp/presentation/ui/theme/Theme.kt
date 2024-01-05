@@ -1,4 +1,4 @@
-package com.re4rk.presentation.ui.theme
+package com.re4rk.oneapp.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

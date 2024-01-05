@@ -1,9 +1,9 @@
-package com.re4rk.data.repository
+package com.re4rk.oneapp.data.repository
 
-import com.re4rk.data.model.koGpt.KoGptRequest
-import com.re4rk.data.service.KoGptService
-import com.re4rk.domain.model.KoGpt
-import com.re4rk.domain.repository.KoGptRepository
+import com.re4rk.oneapp.data.model.koGpt.KoGptRequest
+import com.re4rk.oneapp.data.service.KoGptService
+import com.re4rk.oneapp.domain.model.KoGpt
+import com.re4rk.oneapp.domain.repository.KoGptRepository
 
 class DefaultKoGptRepository(
     private val koGPTService: KoGptService,
