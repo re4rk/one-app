@@ -24,7 +24,14 @@ dependencies {
 
 gradlePlugin {
     plugins {
-
+        register("androidApplicationCompose") {
+            id = "oneApp.android.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
+        register("androidApplication") {
+            id = "oneApp.android.application"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
         register("androidLibrary") {
             id = "oneApp.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
