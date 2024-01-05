@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.re4rk.oneapp.navigation
+package com.re4rk.oneapp.app.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.re4rk.oneapp.core.designsystem.icon.ArkIcons

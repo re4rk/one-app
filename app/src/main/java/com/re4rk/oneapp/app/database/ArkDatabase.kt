@@ -1,4 +1,4 @@
-package com.re4rk.oneapp.data.database
+package com.re4rk.oneapp.app.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
