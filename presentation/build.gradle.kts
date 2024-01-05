@@ -14,16 +14,9 @@ android {
 dependencies {
     implementation(project(":core:designsystem"))
 
-    // android
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.android.material)
-
     // glide
     implementation(libs.glide)
     implementation(libs.glide.landscapist)
-
-    // compose
-    implementation(libs.androidx.compose.ui.graphic)
 
     // coroutine
     implementation(libs.kotlinx.coroutines.android)
