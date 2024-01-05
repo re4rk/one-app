@@ -1,4 +1,4 @@
-package com.re4rk.presentation.designSystem.icon
+package com.re4rk.oneapp.core.designsystem.icon
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home

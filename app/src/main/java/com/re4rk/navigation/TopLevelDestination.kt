@@ -17,7 +17,7 @@
 package com.re4rk.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.re4rk.presentation.designSystem.icon.ArkIcons
+import com.re4rk.oneapp.core.designsystem.icon.ArkIcons
 import com.re4rk.presentation.R as presentationR
 
 /**

@@ -1,4 +1,4 @@
-package com.re4rk.presentation.designSystem.component
+package com.re4rk.oneapp.core.designsystem.component
 
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.re4rk.presentation.designSystem.icon.ArkIcons
+import com.re4rk.oneapp.core.designsystem.icon.ArkIcons
 
 @Composable
 fun RowScope.ArkNavigationBarItem(

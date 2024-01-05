@@ -1,4 +1,4 @@
-package com.re4rk.presentation.designSystem.component
+package com.re4rk.oneapp.core.designsystem.component
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
@@ -61,7 +61,7 @@ fun ArkTopAppBar(
 @Composable
 private fun ArkTopAppBarPreview() {
     ArkTopAppBar(
-        titleRes = android.R.string.untitled,
+        titleRes = 0,
         navigationIcon = Icons.Default.Menu,
         navigationIconContentDescription = "Navigation icon",
         actionIcon = Icons.Default.Menu,

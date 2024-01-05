@@ -38,7 +38,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.re4rk.domain.model.Memo
 import com.re4rk.presentation.R
-import com.re4rk.presentation.designSystem.component.ArkTopAppBar
+import com.re4rk.oneapp.core.designsystem.component.ArkTopAppBar
 import com.re4rk.presentation.ui.theme.OneAppTheme
 
 @Composable

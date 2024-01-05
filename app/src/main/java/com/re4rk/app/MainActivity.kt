@@ -16,8 +16,8 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
 import com.re4rk.navigation.TopLevelDestination
-import com.re4rk.presentation.designSystem.component.ArkNavigationBar
-import com.re4rk.presentation.designSystem.component.ArkNavigationBarItem
+import com.re4rk.oneapp.core.designsystem.component.ArkNavigationBar
+import com.re4rk.oneapp.core.designsystem.component.ArkNavigationBarItem
 import com.re4rk.presentation.ui.home.navigation.homeNavigationRoute
 import com.re4rk.presentation.ui.home.navigation.homeScreen
 import com.re4rk.presentation.ui.home.navigation.navigateToHome

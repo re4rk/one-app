@@ -12,6 +12,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:designsystem"))
+
     // android
     implementation(libs.androidx.core.ktx)
     implementation(libs.android.material)
@@ -22,9 +24,6 @@ dependencies {
 
     // compose
     implementation(libs.androidx.compose.ui.graphic)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.material.iconsExtended)
 
     // coroutine
     implementation(libs.kotlinx.coroutines.android)

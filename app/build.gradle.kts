@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:designsystem"))
+
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation(project(mapOf("path" to ":presentation")))
