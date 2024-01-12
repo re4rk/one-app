@@ -31,6 +31,7 @@ fun DynamicAsyncImage(
     contentDescription: String?,
     modifier: Modifier = Modifier,
     placeholder: Painter = painterResource(R.drawable.ic_placeholder_default),
+    contentScale: ContentScale = ContentScale.FillBounds,
 ) {
     val iconTint = LocalTintTheme.current.iconTint
     var isLoading by remember { mutableStateOf(true) }
@@ -56,10 +57,41 @@ fun DynamicAsyncImage(
             )
         }
         Image(
-            contentScale = ContentScale.Crop,
             painter = if (isError.not() && !isLocalInspection) imageLoader else placeholder,
             contentDescription = contentDescription,
             colorFilter = if (iconTint != null) ColorFilter.tint(iconTint) else null,
+            contentScale = contentScale,
+            modifier = Modifier.matchParentSize(),
         )
     }
+}
+
+@Preview
+@Composable
+fun PreviewDynamicAsyncImage50x150() {
+    DynamicAsyncImage(
+        imageUrl = "https:empty",
+        contentDescription = "Dynamic Async Image",
+        modifier = Modifier.size(width = 50.dp, height = 150.dp),
+    )
+}
+
+@Preview
+@Composable
+fun PreviewDynamicAsyncImage100x100() {
+    DynamicAsyncImage(
+        imageUrl = "https:empty",
+        contentDescription = "Dynamic Async Image",
+        modifier = Modifier.size(100.dp),
+    )
+}
+
+@Preview
+@Composable
+fun PreviewDynamicAsyncImage150x50() {
+    DynamicAsyncImage(
+        imageUrl = "https:empty",
+        contentDescription = "Dynamic Async Image",
+        modifier = Modifier.size(width = 150.dp, height = 50.dp),
+    )
 }
