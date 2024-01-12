@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                 NavHost(
                     navController = oneAppState.navController,
                     startDestination = homeNavigationRoute,
-                    modifier = Modifier.padding(innerPadding)
+                    modifier = Modifier.padding(innerPadding),
                 ) {
                     memoScreen()
                     homeScreen()
