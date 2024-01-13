@@ -1,14 +1,17 @@
 package com.re4rk.oneapp.feature.shopping
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,12 +32,14 @@ fun ShoppingItem(
     title: String,
     price: String,
     description: String,
+    count: Int,
+    countChangeListener: (Int) -> Unit = {},
 ) {
     Box(
         modifier =
         modifier
             .clip(shape = RoundedCornerShape(16.dp))
-            .background(color = MaterialTheme.colorScheme.surface),
+            .background(color = MaterialTheme.colorScheme.primaryContainer),
     ) {
         Column(
             modifier = Modifier,
@@ -56,6 +61,14 @@ fun ShoppingItem(
                 ShoppingItemDescription(description)
             }
         }
+
+        ShoppingItemCounter(
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(8.dp),
+            count = count,
+            countChangeListener = countChangeListener,
+        )
     }
 }
 
@@ -88,6 +101,99 @@ fun ShoppingItemDescription(description: String) {
         fontSize = MaterialTheme.typography.bodySmall.fontSize,
     )
 }
+
+@Composable
+fun ShoppingItemCounter(
+    modifier: Modifier = Modifier,
+    count: Int,
+    countChangeListener: (Int) -> Unit = {},
+) {
+    Box(
+        modifier = modifier,
+    ) {
+        if (count > 0) {
+            ShoppingItemCounterPlus(count = count, countChangeListener = countChangeListener)
+        } else {
+            ShoppingItemCounterZero(countChangeListener = countChangeListener)
+        }
+    }
+}
+
+@Composable
+fun ShoppingItemCounterZero(
+    countChangeListener: (Int) -> Unit,
+) {
+    Box(
+        modifier = Modifier
+            .width(32.dp)
+            .height(32.dp)
+            .clip(shape = RoundedCornerShape(16.dp))
+            .background(color = MaterialTheme.colorScheme.surface)
+            .clickable { countChangeListener(1) },
+    ) {
+        Text(
+            text = "+",
+            modifier = Modifier.align(Alignment.Center),
+        )
+    }
+}
+
+@Composable
+fun ShoppingItemCounterPlus(
+    count: Int,
+    countChangeListener: (Int) -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .wrapContentWidth()
+            .height(32.dp)
+            .clip(shape = RoundedCornerShape(16.dp))
+            .background(color = MaterialTheme.colorScheme.surface),
+    ) {
+        Box(
+            modifier = Modifier
+                .width(32.dp)
+                .fillMaxHeight()
+                .clickable { countChangeListener(count - 1) },
+        ) {
+            Text(
+                text = "-",
+                modifier = Modifier.align(Alignment.Center),
+            )
+        }
+        Box(
+            modifier = Modifier
+                .width(32.dp)
+                .fillMaxHeight(),
+        ) {
+            Text(
+                text = count.toString(),
+                modifier = Modifier.align(Alignment.Center),
+            )
+        }
+        Box(
+            modifier = Modifier
+                .width(32.dp)
+                .fillMaxHeight()
+                .clickable { countChangeListener(count + 1) },
+        ) {
+            Text(
+                text = "+",
+                modifier = Modifier.align(Alignment.Center),
+            )
+        }
+    }
+}
+
+@Composable
+@Preview(showBackground = false)
+fun ShoppingItemCounterPreview() {
+    Column {
+        ShoppingItemCounter(count = 0)
+        ShoppingItemCounter(count = 1)
+    }
+}
+
 @Composable
 @Preview(showBackground = false)
 fun ShoppingItemPreview1() {
@@ -100,6 +206,7 @@ fun ShoppingItemPreview1() {
         title = "Title",
         price = "$100",
         description = "Description".repeat(60),
+        count = 0,
     )
 }
 
@@ -115,5 +222,6 @@ fun ShoppingItemPreview2() {
         title = "Title",
         price = "$100",
         description = "Description".repeat(60),
+        count = 0,
     )
 }
