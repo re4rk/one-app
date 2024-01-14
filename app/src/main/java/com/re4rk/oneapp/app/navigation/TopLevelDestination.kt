@@ -18,8 +18,8 @@ package com.re4rk.oneapp.app.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.re4rk.oneapp.core.designsystem.icon.ArkIcons
-import com.re4rk.presentation.R as presentationR
 import com.re4rk.oneapp.feature.shopping.R as shoppingR
+import com.re4rk.presentation.R as presentationR
 
 /**
  * Type for the top level destinations in the application. Each of these destinations
