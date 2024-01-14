@@ -30,6 +30,7 @@ android {
 dependencies {
     implementation(project(":presentation"))
     implementation(project(":core:designsystem"))
+    implementation(project(":feature:shopping"))
 
     implementation(project(":domain"))
 

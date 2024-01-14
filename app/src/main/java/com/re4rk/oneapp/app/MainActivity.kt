@@ -25,6 +25,8 @@ import com.re4rk.oneapp.app.navigation.TopLevelDestination
 import com.re4rk.oneapp.core.designsystem.component.ArkNavigationBar
 import com.re4rk.oneapp.core.designsystem.component.ArkNavigationBarItem
 import com.re4rk.oneapp.core.designsystem.component.ArkTopAppBar
+import com.re4rk.oneapp.feature.shopping.navigation.navigateToShopping
+import com.re4rk.oneapp.feature.shopping.navigation.shoppingScreen
 import com.re4rk.oneapp.presentation.ui.home.navigation.homeNavigationRoute
 import com.re4rk.oneapp.presentation.ui.home.navigation.homeScreen
 import com.re4rk.oneapp.presentation.ui.home.navigation.navigateToHome
@@ -64,6 +66,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.padding(innerPadding),
                 ) {
                     memoScreen()
+                    shoppingScreen()
                     homeScreen()
                     menuScreen()
                 }
@@ -88,6 +91,7 @@ class MainActivity : ComponentActivity() {
                 onClick = {
                     when (destination) {
                         TopLevelDestination.HOME -> oneAppState.navController.navigateToHome()
+                        TopLevelDestination.SHOPPING -> oneAppState.navController.navigateToShopping()
                         TopLevelDestination.MENU -> oneAppState.navController.navigateToMenu()
                         TopLevelDestination.MEMO -> oneAppState.navController.navigateToMemo()
                     }

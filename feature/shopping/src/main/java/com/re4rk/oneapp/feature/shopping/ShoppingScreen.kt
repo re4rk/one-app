@@ -42,7 +42,7 @@ fun ShoppingScreen() {
                         .height(250.dp)
                         .padding(8.dp)
                         .clickable { },
-                    imageUrl = "https://picsum.photos/600/600",
+                    imageUrl = "https://picsum.photos/600/${600 + it}",
                     title = "Title",
                     price = "Price",
                     description = "Description",
