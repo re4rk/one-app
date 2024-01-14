@@ -27,7 +27,7 @@ fun ShoppingScreen() {
         modifier =
         Modifier
             .background(
-                MaterialTheme.colorScheme.primary,
+                MaterialTheme.colorScheme.surface,
             )
             .padding(8.dp)
             .fillMaxHeight(),

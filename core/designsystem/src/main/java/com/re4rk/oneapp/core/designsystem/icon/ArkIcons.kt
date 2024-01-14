@@ -13,6 +13,7 @@ import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.ShoppingCart
 
 object ArkIcons {
     val Add = Icons.Rounded.Add
@@ -27,4 +28,5 @@ object ArkIcons {
     val Settings = Icons.Rounded.Settings
     val Menu = Icons.Rounded.Menu
     val Memo = Icons.Rounded.DateRange
+    val ShoppingCart = Icons.Rounded.ShoppingCart
 }
