@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.re4rk.oneapp.domain.model.CartProduct
+import com.re4rk.oneapp.domain.model.Product
 
 @Composable
 fun ShoppingRoute(
@@ -58,7 +59,7 @@ fun ShoppingScreen(
                         .padding(8.dp)
                         .clickable { },
                     product = cartProduct.product,
-                    count = idx,
+                    count = cartProduct.count,
                     onItemClick = {
                         Toast.makeText(context, "Clicked $it", Toast.LENGTH_SHORT).show()
                     },
@@ -71,6 +72,39 @@ fun ShoppingScreen(
 
 @Composable
 @Preview
-fun ShoppingRootPreview() {
-    ShoppingRoute()
+fun ShoppingScreenPreview() {
+    ShoppingScreen(
+        cartProducts = listOf(
+            CartProduct(
+                product = Product(
+                    id = 4,
+                    title = "Product 4",
+                    description = "Description 4",
+                    price = "400",
+                    imageUrl = "https://picsum.photos/200/300",
+                ),
+                count = 4,
+            ),
+            CartProduct(
+                product = Product(
+                    id = 5,
+                    title = "Product 5",
+                    description = "Description 5",
+                    price = "500",
+                    imageUrl = "https://picsum.photos/200/300",
+                ),
+                count = 5,
+            ),
+            CartProduct(
+                product = Product(
+                    id = 6,
+                    title = "Product 6",
+                    description = "Description 6",
+                    price = "600",
+                    imageUrl = "https://picsum.photos/200/300",
+                ),
+                count = 6,
+            ),
+        ),
+    )
 }
