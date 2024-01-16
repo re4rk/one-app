@@ -42,7 +42,7 @@ fun ShoppingItem(
     product: Product,
     count: Int,
     onItemClick: (Long) -> Unit = {},
-    onCountChanged: (Int) -> Unit = {},
+    onCountChanged: (Long, Int) -> Unit = { _, _ -> },
 ) {
     Box(
         modifier = modifier
@@ -82,7 +82,7 @@ fun ShoppingItem(
                 .align(Alignment.BottomEnd)
                 .padding(8.dp),
             count = count,
-            countChangeListener = onCountChanged,
+            countChangeListener = { onCountChanged(product.id, it) },
         )
     }
 }

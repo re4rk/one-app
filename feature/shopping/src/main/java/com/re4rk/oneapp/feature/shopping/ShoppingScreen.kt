@@ -12,30 +12,30 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.re4rk.oneapp.domain.model.Product
+import com.re4rk.oneapp.domain.model.CartProduct
 
 @Composable
-fun ShoppingRoot(
+fun ShoppingRoute(
     vm: ShoppingViewModel = hiltViewModel(),
 ) {
-    val products by vm.products.collectAsStateWithLifecycle()
+    val cartProducts by vm.products.collectAsStateWithLifecycle()
 
     ShoppingScreen(
-        products = products,
+        cartProducts = cartProducts,
+        onCountChanged = { id, count -> vm.updateCount(id, count) },
     )
 }
 
 @Composable
 fun ShoppingScreen(
-    products: List<Product>,
+    cartProducts: List<CartProduct>,
+    onCountChanged: (Long, Int) -> Unit = { _, _ -> },
 ) {
     val context = LocalContext.current
 
@@ -49,21 +49,20 @@ fun ShoppingScreen(
             .fillMaxHeight(),
         columns = GridCells.Adaptive(minSize = 128.dp),
     ) {
-        products.forEachIndexed() { idx, product ->
+        cartProducts.forEachIndexed { idx, cartProduct ->
             item {
-                val count = remember { mutableStateOf(2) }
                 ShoppingItem(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(250.dp)
                         .padding(8.dp)
                         .clickable { },
-                    product = product,
+                    product = cartProduct.product,
                     count = idx,
                     onItemClick = {
                         Toast.makeText(context, "Clicked $it", Toast.LENGTH_SHORT).show()
                     },
-                    onCountChanged = { count.value = it },
+                    onCountChanged = onCountChanged,
                 )
             }
         }
@@ -73,5 +72,5 @@ fun ShoppingScreen(
 @Composable
 @Preview
 fun ShoppingRootPreview() {
-    ShoppingRoot()
+    ShoppingRoute()
 }

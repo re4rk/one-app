@@ -4,7 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.re4rk.oneapp.feature.shopping.ShoppingScreen
+import com.re4rk.oneapp.feature.shopping.ShoppingRoute
 
 const val shoppingNavigationRoute = "shopping_route"
 
@@ -14,6 +14,6 @@ fun NavController.navigateToShopping(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.shoppingScreen() {
     composable(route = shoppingNavigationRoute) {
-        ShoppingScreen()
+        ShoppingRoute()
     }
 }
