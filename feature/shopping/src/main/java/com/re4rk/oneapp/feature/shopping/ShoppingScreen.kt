@@ -12,7 +12,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -40,8 +39,6 @@ fun ShoppingScreen(
     onItemClick: (Long) -> Unit = { },
     onCountChanged: (Long, Int) -> Unit = { _, _ -> },
 ) {
-    val context = LocalContext.current
-
     LazyVerticalGrid(
         modifier =
         Modifier
@@ -52,7 +49,7 @@ fun ShoppingScreen(
             .fillMaxHeight(),
         columns = GridCells.Adaptive(minSize = 128.dp),
     ) {
-        cartProducts.forEachIndexed { idx, cartProduct ->
+        cartProducts.forEach { cartProduct ->
             item {
                 ShoppingItem(
                     modifier = Modifier

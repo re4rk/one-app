@@ -12,8 +12,33 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.re4rk.oneapp.core.designsystem.component.DynamicAsyncImage
 import com.re4rk.oneapp.domain.model.Product
+
+@Composable
+fun ShoppingDetailRoute(
+    productId: Long,
+    vm: ShoppingDetailViewModel = hiltViewModel(),
+) {
+    val uiState = vm.uiState.collectAsStateWithLifecycle()
+
+    when (val state = uiState.value) {
+        is ShoppingDetailUiState.Loading -> {
+            Text(text = "Loading")
+            vm.syncProduct(productId)
+        }
+
+        is ShoppingDetailUiState.Success -> {
+            ShoppingDetailScreen(product = state.product)
+        }
+
+        is ShoppingDetailUiState.Error -> {
+            Text(text = "Error")
+        }
+    }
+}
 
 @Composable
 fun ShoppingDetailScreen(
