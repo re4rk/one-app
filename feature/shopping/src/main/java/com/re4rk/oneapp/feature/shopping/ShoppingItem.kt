@@ -43,7 +43,7 @@ fun ShoppingItem(
     price: String,
     description: String,
     count: Int,
-    countChangeListener: (Int) -> Unit = {},
+    onCountChanged: (Int) -> Unit = {},
 ) {
     Box(
         modifier = modifier
@@ -82,7 +82,7 @@ fun ShoppingItem(
                 .align(Alignment.BottomEnd)
                 .padding(8.dp),
             count = count,
-            countChangeListener = countChangeListener,
+            countChangeListener = onCountChanged,
         )
     }
 }

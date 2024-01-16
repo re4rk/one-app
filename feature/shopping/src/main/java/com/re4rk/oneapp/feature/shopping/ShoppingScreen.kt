@@ -47,7 +47,7 @@ fun ShoppingScreen() {
                     price = "Price",
                     description = "Description",
                     count = count.value,
-                    countChangeListener = { count.value = it },
+                    onCountChanged = { count.value = it },
                 )
             }
         }
