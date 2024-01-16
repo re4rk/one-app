@@ -2,27 +2,25 @@ package com.re4rk.oneapp.feature.shopping
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.re4rk.oneapp.domain.model.Product
+import com.re4rk.oneapp.domain.model.CartProduct
+import com.re4rk.oneapp.domain.repository.ShoppingRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
 
-class ShoppingViewModel : ViewModel() {
-    val products: StateFlow<List<Product>> = flowOf<List<Product>>().onStart {
-        repeat(10) {
-            Product(
-                id = it.toLong(),
-                title = "Title",
-                price = "Price",
-                description = "Description",
-                imageUrl = "https://picsum.photos/600/${600 + it}",
-            )
-        }
-    }.stateIn(
+@HiltViewModel
+class ShoppingViewModel @Inject constructor(
+    private val shoppingRepository: ShoppingRepository,
+) : ViewModel() {
+    val products: StateFlow<List<CartProduct>> = shoppingRepository.cartProducts.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(),
         initialValue = emptyList(),
     )
+
+    fun updateCount(id: Long, count: Int) {
+        shoppingRepository.changeCartProductCount(id, count)
+    }
 }
