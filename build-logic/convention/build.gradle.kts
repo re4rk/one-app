@@ -48,6 +48,9 @@ gradlePlugin {
             id = "oneApp.android.feature"
             implementationClass = "AndroidFeatureConventionPlugin"
         }
-
+        register("kotlinLibrary") {
+            id = "oneApp.kotlin.library"
+            implementationClass = "KotlinLibraryConventionPlugin"
+        }
     }
 }
