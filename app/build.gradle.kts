@@ -31,6 +31,7 @@ dependencies {
     implementation(project(":presentation"))
     implementation(project(":core:designsystem"))
     implementation(project(":feature:shopping"))
+    implementation(project(":feature:shopping-detail"))
 
     implementation(project(":domain"))
 

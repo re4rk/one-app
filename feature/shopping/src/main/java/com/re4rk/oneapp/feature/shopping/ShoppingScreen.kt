@@ -1,6 +1,5 @@
 package com.re4rk.oneapp.feature.shopping
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -23,12 +22,14 @@ import com.re4rk.oneapp.domain.model.Product
 
 @Composable
 fun ShoppingRoute(
+    onItemClick: (Long) -> Unit = { },
     vm: ShoppingViewModel = hiltViewModel(),
 ) {
     val cartProducts by vm.products.collectAsStateWithLifecycle()
 
     ShoppingScreen(
         cartProducts = cartProducts,
+        onItemClick = onItemClick,
         onCountChanged = { id, count -> vm.updateCount(id, count) },
     )
 }
@@ -36,6 +37,7 @@ fun ShoppingRoute(
 @Composable
 fun ShoppingScreen(
     cartProducts: List<CartProduct>,
+    onItemClick: (Long) -> Unit = { },
     onCountChanged: (Long, Int) -> Unit = { _, _ -> },
 ) {
     val context = LocalContext.current
@@ -60,9 +62,7 @@ fun ShoppingScreen(
                         .clickable { },
                     product = cartProduct.product,
                     count = cartProduct.count,
-                    onItemClick = {
-                        Toast.makeText(context, "Clicked $it", Toast.LENGTH_SHORT).show()
-                    },
+                    onItemClick = onItemClick,
                     onCountChanged = onCountChanged,
                 )
             }

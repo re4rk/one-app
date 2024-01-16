@@ -12,8 +12,10 @@ fun NavController.navigateToShopping(navOptions: NavOptions? = null) {
     this.navigate(shoppingNavigationRoute, navOptions)
 }
 
-fun NavGraphBuilder.shoppingScreen() {
+fun NavGraphBuilder.shoppingScreen(
+    onItemClick: (Long) -> Unit = { },
+) {
     composable(route = shoppingNavigationRoute) {
-        ShoppingRoute()
+        ShoppingRoute(onItemClick = onItemClick)
     }
 }
