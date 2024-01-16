@@ -8,5 +8,5 @@ interface ShoppingRepository {
     val products: Flow<List<Product>>
     val cartProducts: Flow<List<CartProduct>>
 
-    fun changeCartProductCount(productId: Long, count: Int)
+    fun updateCartProductCount(productId: Long, count: Int)
 }

@@ -21,6 +21,6 @@ class ShoppingViewModel @Inject constructor(
     )
 
     fun updateCount(id: Long, count: Int) {
-        shoppingRepository.changeCartProductCount(id, count)
+        shoppingRepository.updateCartProductCount(id, count)
     }
 }
