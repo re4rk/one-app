@@ -34,17 +34,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.re4rk.oneapp.core.designsystem.component.DynamicAsyncImage
 import com.re4rk.oneapp.core.designsystem.icon.ArkIcons
+import com.re4rk.oneapp.domain.model.Product
 
 @Composable
 fun ShoppingItem(
     modifier: Modifier = Modifier,
-    imageUrl: String,
-    id: Int,
-    title: String,
-    price: String,
-    description: String,
+    product: Product,
     count: Int,
-    onItemClick: (Int) -> Unit = {},
+    onItemClick: (Long) -> Unit = {},
     onCountChanged: (Int) -> Unit = {},
 ) {
     Box(
@@ -55,14 +52,14 @@ fun ShoppingItem(
                 clip = true,
             )
             .background(color = MaterialTheme.colorScheme.surface)
-            .clickable { onItemClick(id) },
+            .clickable { onItemClick(product.id) },
     ) {
         Column(
             modifier = Modifier,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             DynamicAsyncImage(
-                imageUrl = imageUrl,
+                imageUrl = product.imageUrl,
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -74,9 +71,9 @@ fun ShoppingItem(
                     .wrapContentHeight()
                     .padding(8.dp),
             ) {
-                ShoppingItemTitle(title)
-                ShoppingItemPrice(price)
-                ShoppingItemDescription(description)
+                ShoppingItemTitle(product.title)
+                ShoppingItemPrice(product.price)
+                ShoppingItemDescription(product.description)
             }
         }
 
@@ -219,15 +216,17 @@ fun ShoppingItemCounterPreview() {
 fun ShoppingItemPreview1() {
     Surface {
         ShoppingItem(
-            imageUrl = "https://picsum.photos/500/500",
             modifier = Modifier
                 .width(200.dp)
                 .height(350.dp)
                 .padding(8.dp),
-            id = 0,
-            title = "Title",
-            price = "$100",
-            description = "Description".repeat(60),
+            product = Product(
+                id = 0,
+                title = "Title",
+                price = "$100",
+                description = "Description".repeat(60),
+                imageUrl = "https://picsum.photos/500/500",
+            ),
             count = 0,
         )
     }
@@ -237,15 +236,17 @@ fun ShoppingItemPreview1() {
 @Preview
 fun ShoppingItemPreview2() {
     ShoppingItem(
-        imageUrl = "https://picsum.photos/500/500",
         modifier = Modifier
             .width(400.dp)
             .height(350.dp)
             .padding(8.dp),
-        id = 0,
-        title = "Title",
-        price = "$100",
-        description = "Description".repeat(60),
+        product = Product(
+            id = 0,
+            title = "Title",
+            price = "$100",
+            description = "Description".repeat(60),
+            imageUrl = "https://picsum.photos/500/500",
+        ),
         count = 0,
     )
 }

@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.re4rk.oneapp.domain.model.Product
 
 @Composable
 fun ShoppingRoot() {
@@ -46,11 +47,13 @@ fun ShoppingScreen() {
                         .height(250.dp)
                         .padding(8.dp)
                         .clickable { },
-                    imageUrl = "https://picsum.photos/600/${600 + it}",
-                    id = it,
-                    title = "Title",
-                    price = "Price",
-                    description = "Description",
+                    product = Product(
+                        id = it.toLong(),
+                        title = "Title",
+                        price = "Price",
+                        description = "Description",
+                        imageUrl = "https://picsum.photos/600/${600 + it}",
+                    ),
                     count = count.value,
                     onItemClick = {
                         Toast.makeText(context, "Clicked $it", Toast.LENGTH_SHORT).show()
