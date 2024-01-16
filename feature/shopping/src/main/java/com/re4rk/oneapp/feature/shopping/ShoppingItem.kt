@@ -39,10 +39,12 @@ import com.re4rk.oneapp.core.designsystem.icon.ArkIcons
 fun ShoppingItem(
     modifier: Modifier = Modifier,
     imageUrl: String,
+    id: Int,
     title: String,
     price: String,
     description: String,
     count: Int,
+    onItemClick: (Int) -> Unit = {},
     onCountChanged: (Int) -> Unit = {},
 ) {
     Box(
@@ -52,7 +54,8 @@ fun ShoppingItem(
                 shape = RoundedCornerShape(16.dp),
                 clip = true,
             )
-            .background(color = MaterialTheme.colorScheme.surface),
+            .background(color = MaterialTheme.colorScheme.surface)
+            .clickable { onItemClick(id) },
     ) {
         Column(
             modifier = Modifier,
@@ -221,6 +224,7 @@ fun ShoppingItemPreview1() {
                 .width(200.dp)
                 .height(350.dp)
                 .padding(8.dp),
+            id = 0,
             title = "Title",
             price = "$100",
             description = "Description".repeat(60),
@@ -238,6 +242,7 @@ fun ShoppingItemPreview2() {
             .width(400.dp)
             .height(350.dp)
             .padding(8.dp),
+        id = 0,
         title = "Title",
         price = "$100",
         description = "Description".repeat(60),
