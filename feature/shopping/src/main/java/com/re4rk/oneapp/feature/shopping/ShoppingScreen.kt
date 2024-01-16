@@ -11,21 +11,32 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.re4rk.oneapp.domain.model.Product
 
 @Composable
-fun ShoppingRoot() {
-    ShoppingScreen()
+fun ShoppingRoot(
+    vm: ShoppingViewModel = hiltViewModel(),
+) {
+    val products by vm.products.collectAsStateWithLifecycle()
+
+    ShoppingScreen(
+        products = products,
+    )
 }
 
 @Composable
-fun ShoppingScreen() {
+fun ShoppingScreen(
+    products: List<Product>,
+) {
     val context = LocalContext.current
 
     LazyVerticalGrid(
@@ -38,7 +49,7 @@ fun ShoppingScreen() {
             .fillMaxHeight(),
         columns = GridCells.Adaptive(minSize = 128.dp),
     ) {
-        repeat(10) {
+        products.forEachIndexed() { idx, product ->
             item {
                 val count = remember { mutableStateOf(2) }
                 ShoppingItem(
@@ -47,14 +58,8 @@ fun ShoppingScreen() {
                         .height(250.dp)
                         .padding(8.dp)
                         .clickable { },
-                    product = Product(
-                        id = it.toLong(),
-                        title = "Title",
-                        price = "Price",
-                        description = "Description",
-                        imageUrl = "https://picsum.photos/600/${600 + it}",
-                    ),
-                    count = count.value,
+                    product = product,
+                    count = idx,
                     onItemClick = {
                         Toast.makeText(context, "Clicked $it", Toast.LENGTH_SHORT).show()
                     },
