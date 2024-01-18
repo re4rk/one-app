@@ -10,7 +10,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RepositoryModule {
+object ARepositoryModule {
     @Provides
     fun provideCoinoneRepository(
         coinoneOrderBookRetrofitService: CoinoneOrderBookRetrofitService,

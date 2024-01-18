@@ -6,14 +6,14 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.re4rk.oneapp.feature.coinoneorder.OrderRoute
 
-const val shoppingNavigationRoute = "coinone_order_route"
+const val orderNavigationRoute = "coinone_order_route"
 
 fun NavController.navigateToCoinoneOrder(navOptions: NavOptions? = null) {
-    this.navigate(shoppingNavigationRoute, navOptions)
+    this.navigate(orderNavigationRoute, navOptions)
 }
 
 fun NavGraphBuilder.coinoneOrderScreen() {
-    composable(route = shoppingNavigationRoute) {
+    composable(route = orderNavigationRoute) {
         OrderRoute()
     }
 }

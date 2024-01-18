@@ -27,11 +27,11 @@ import com.re4rk.oneapp.core.designsystem.component.ArkNavigationBarItem
 import com.re4rk.oneapp.core.designsystem.component.ArkTopAppBar
 import com.re4rk.oneapp.feature.coinoneorder.navigation.coinoneOrderScreen
 import com.re4rk.oneapp.feature.coinoneorder.navigation.navigateToCoinoneOrder
+import com.re4rk.oneapp.feature.coinoneorder.navigation.orderNavigationRoute
 import com.re4rk.oneapp.feature.shopping.navigation.navigateToShopping
 import com.re4rk.oneapp.feature.shopping.navigation.shoppingScreen
 import com.re4rk.oneapp.feature.shoppingdetail.navigation.navigateToShoppingDetail
 import com.re4rk.oneapp.feature.shoppingdetail.navigation.shoppingDetailScreen
-import com.re4rk.oneapp.presentation.ui.home.navigation.homeNavigationRoute
 import com.re4rk.oneapp.presentation.ui.home.navigation.homeScreen
 import com.re4rk.oneapp.presentation.ui.home.navigation.navigateToHome
 import com.re4rk.oneapp.presentation.ui.memo.navigation.memoScreen
@@ -66,7 +66,7 @@ class MainActivity : ComponentActivity() {
             ) { innerPadding ->
                 NavHost(
                     navController = oneAppState.navController,
-                    startDestination = homeNavigationRoute,
+                    startDestination = orderNavigationRoute,
                     modifier = Modifier.padding(innerPadding),
                 ) {
                     memoScreen()

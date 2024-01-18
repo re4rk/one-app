@@ -16,22 +16,7 @@ class OrderViewModel @Inject constructor(
     private val coinoneRepository: CoinoneRepository,
 ) : ViewModel() {
     val orderBook: StateFlow<Result<OrderBook>> = flow {
-//        emit(coinoneRepository.getOrderBook("BTC", "KRW"))
-        emit(
-            Result.success(
-                OrderBook(
-                    timestamp = 0,
-                    bids = emptyList(),
-                    asks = emptyList(),
-                    errorCode = "",
-                    id = "",
-                    orderBookUnit = "",
-                    quoteCurrency = "",
-                    result = "",
-                    targetCurrency = "",
-                ),
-            ),
-        )
+        emit(coinoneRepository.getOrderBook("KRW", "BTC"))
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(),
