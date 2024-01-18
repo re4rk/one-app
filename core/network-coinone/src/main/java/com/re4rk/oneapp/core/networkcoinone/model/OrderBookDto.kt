@@ -1,15 +1,16 @@
 package com.re4rk.oneapp.core.networkcoinone.model
 
+import com.re4rk.oneapp.core.modelcoinone.coinone.model.OrderBook
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class OrderBook(
+data class OrderBookDto(
     @SerialName("asks")
-    val asks: List<Ask>,
+    val asks: List<AskDto>,
 
     @SerialName("bids")
-    val bids: List<Bid>,
+    val bids: List<BidDto>,
 
     @SerialName("error_code")
     val errorCode: String,
@@ -31,4 +32,16 @@ data class OrderBook(
 
     @SerialName("timestamp")
     val timestamp: Long,
-)
+) {
+    fun toDomain() = OrderBook(
+        asks = asks.map { it.toDomain() },
+        bids = bids.map { it.toDomain() },
+        errorCode = errorCode,
+        id = id,
+        orderBookUnit = orderBookUnit,
+        quoteCurrency = quoteCurrency,
+        result = result,
+        targetCurrency = targetCurrency,
+        timestamp = timestamp,
+    )
+}

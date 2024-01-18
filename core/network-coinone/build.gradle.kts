@@ -3,6 +3,8 @@ plugins {
     kotlin("plugin.serialization") version "1.8.22"
 }
 dependencies {
+    implementation(project(":core:model-coinone"))
+
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging)
