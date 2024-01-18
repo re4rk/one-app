@@ -1,4 +1,4 @@
-package com.re4rk.oneapp.core.modelcoinone.coinone.model
+package com.re4rk.oneapp.core.model.coinone
 
 data class Ask(
     val price: String,

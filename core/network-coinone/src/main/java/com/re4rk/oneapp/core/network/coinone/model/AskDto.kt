@@ -1,6 +1,6 @@
-package com.re4rk.oneapp.core.networkcoinone.model
+package com.re4rk.oneapp.core.network.coinone.model
 
-import com.re4rk.oneapp.core.modelcoinone.coinone.model.Ask
+import com.re4rk.oneapp.core.model.coinone.Ask
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -1,4 +1,4 @@
-package com.re4rk.oneapp.core.networkcoinone.di
+package com.re4rk.oneapp.core.network.coinone.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Provides

@@ -1,6 +1,6 @@
-package com.re4rk.oneapp.core.networkcoinone
+package com.re4rk.oneapp.core.network.coinone
 
-import com.re4rk.oneapp.core.networkcoinone.model.OrderBookDto
+import com.re4rk.oneapp.core.network.coinone.model.OrderBookDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

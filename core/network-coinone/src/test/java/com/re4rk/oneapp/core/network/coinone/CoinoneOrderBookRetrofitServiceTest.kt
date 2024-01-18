@@ -1,11 +1,11 @@
-package com.re4rk.oneapp.core.networkcoinone
+package com.re4rk.oneapp.core.network.coinone
 
-import com.re4rk.oneapp.core.networkcoinone.di.ApiModule
+import com.re4rk.oneapp.core.network.coinone.di.ApiModule
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 
-class CoinoneRetrofitServiceTest {
+class CoinoneOrderBookRetrofitServiceTest {
     private var coinoneOrderBookRetrofitService: CoinoneOrderBookRetrofitService =
         ApiModule.providesNormalRetrofit(
             ApiModule.provideBaseURL(),
