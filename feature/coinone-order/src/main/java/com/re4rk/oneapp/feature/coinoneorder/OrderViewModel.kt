@@ -1,0 +1,40 @@
+package com.re4rk.oneapp.feature.coinoneorder
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.re4rk.oneapp.core.data.coinone.CoinoneRepository
+import com.re4rk.oneapp.core.model.coinone.OrderBook
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.stateIn
+import javax.inject.Inject
+
+@HiltViewModel
+class OrderViewModel @Inject constructor(
+    private val coinoneRepository: CoinoneRepository,
+) : ViewModel() {
+    val orderBook: StateFlow<Result<OrderBook>> = flow {
+//        emit(coinoneRepository.getOrderBook("BTC", "KRW"))
+        emit(
+            Result.success(
+                OrderBook(
+                    timestamp = 0,
+                    bids = emptyList(),
+                    asks = emptyList(),
+                    errorCode = "",
+                    id = "",
+                    orderBookUnit = "",
+                    quoteCurrency = "",
+                    result = "",
+                    targetCurrency = "",
+                ),
+            ),
+        )
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(),
+        initialValue = Result.failure(Throwable("initial value")),
+    )
+}

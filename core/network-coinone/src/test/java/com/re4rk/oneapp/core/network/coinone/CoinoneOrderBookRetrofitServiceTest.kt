@@ -7,7 +7,7 @@ import org.junit.jupiter.api.assertDoesNotThrow
 
 class CoinoneOrderBookRetrofitServiceTest {
     private var coinoneOrderBookRetrofitService: CoinoneOrderBookRetrofitService =
-        ApiModule.providesNormalRetrofit(
+        ApiModule.provideNormalRetrofit(
             ApiModule.provideBaseURL(),
             ApiModule.provideRetrofitConverterFactory(),
         ).create(CoinoneOrderBookRetrofitService::class.java)

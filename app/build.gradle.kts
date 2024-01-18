@@ -29,7 +29,13 @@ android {
 
 dependencies {
     implementation(project(":presentation"))
+
+    implementation(project(":core:data-coinone"))
     implementation(project(":core:designsystem"))
+    implementation(project(":core:model-coinone"))
+    implementation(project(":core:network-coinone"))
+
+    implementation(project(":feature:coinone-order"))
     implementation(project(":feature:shopping"))
     implementation(project(":feature:shopping-detail"))
 

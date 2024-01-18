@@ -25,6 +25,8 @@ import com.re4rk.oneapp.app.navigation.TopLevelDestination
 import com.re4rk.oneapp.core.designsystem.component.ArkNavigationBar
 import com.re4rk.oneapp.core.designsystem.component.ArkNavigationBarItem
 import com.re4rk.oneapp.core.designsystem.component.ArkTopAppBar
+import com.re4rk.oneapp.feature.coinoneorder.navigation.coinoneOrderScreen
+import com.re4rk.oneapp.feature.coinoneorder.navigation.navigateToCoinoneOrder
 import com.re4rk.oneapp.feature.shopping.navigation.navigateToShopping
 import com.re4rk.oneapp.feature.shopping.navigation.shoppingScreen
 import com.re4rk.oneapp.feature.shoppingdetail.navigation.navigateToShoppingDetail
@@ -69,7 +71,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     memoScreen()
                     shoppingDetailScreen()
-
+                    coinoneOrderScreen()
                     shoppingScreen { productId ->
                         oneAppState.navController.navigateToShoppingDetail(productId)
                     }
@@ -97,6 +99,7 @@ class MainActivity : ComponentActivity() {
                 onClick = {
                     when (destination) {
                         TopLevelDestination.HOME -> oneAppState.navController.navigateToHome()
+                        TopLevelDestination.ORDER -> oneAppState.navController.navigateToCoinoneOrder()
                         TopLevelDestination.SHOPPING -> oneAppState.navController.navigateToShopping()
                         TopLevelDestination.MENU -> oneAppState.navController.navigateToMenu()
                         TopLevelDestination.MEMO -> oneAppState.navController.navigateToMemo()

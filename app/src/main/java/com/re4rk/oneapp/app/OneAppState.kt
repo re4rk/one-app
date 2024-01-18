@@ -25,4 +25,3 @@ class OneAppState(
 
     val topLevelDestinations: List<TopLevelDestination> = TopLevelDestination.values().asList()
 }
-

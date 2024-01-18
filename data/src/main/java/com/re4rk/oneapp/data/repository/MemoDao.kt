@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.re4rk.oneapp.data.repository.MemoEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

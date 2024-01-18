@@ -18,6 +18,7 @@ package com.re4rk.oneapp.app.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.re4rk.oneapp.core.designsystem.icon.ArkIcons
+import com.re4rk.oneapp.feature.coinoneorder.R as coinoneOrderR
 import com.re4rk.oneapp.feature.shopping.R as shoppingR
 import com.re4rk.presentation.R as presentationR
 
@@ -37,6 +38,12 @@ enum class TopLevelDestination(
         unselectedIcon = ArkIcons.Memo,
         iconTextId = presentationR.string.memo,
         titleTextId = presentationR.string.memo,
+    ),
+    ORDER(
+        selectedIcon = ArkIcons.Person,
+        unselectedIcon = ArkIcons.Person,
+        iconTextId = coinoneOrderR.string.order,
+        titleTextId = coinoneOrderR.string.order,
     ),
     SHOPPING(
         selectedIcon = ArkIcons.Shopping,

@@ -12,6 +12,9 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":core:data-coinone"))
+    implementation(project(":core:model-coinone"))
     implementation(project(":core:designsystem"))
 
     // glide

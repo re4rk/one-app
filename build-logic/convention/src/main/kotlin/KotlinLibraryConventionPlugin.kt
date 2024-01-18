@@ -11,6 +11,7 @@ class KotlinLibraryConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("java-library")
                 apply("org.jetbrains.kotlin.jvm")
+                apply("org.jetbrains.kotlin.kapt")
                 configureKotlinJvm()
             }
 
@@ -20,6 +21,7 @@ class KotlinLibraryConventionPlugin : Plugin<Project> {
 
             dependencies {
                 add("implementation", libs.findLibrary("hilt.core").get())
+                "kapt"(libs.findLibrary("hilt.compiler").get())
 
                 add("testImplementation", libs.findLibrary("assertj.core").get())
 
