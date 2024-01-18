@@ -1,7 +1,9 @@
 package com.re4rk.oneapp.core.network.coinone.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -14,6 +16,8 @@ import javax.inject.Singleton
 @Retention(AnnotationRetention.BINARY)
 annotation class BaseUrlQualifier
 
+@InstallIn(Singleton::class)
+@Module
 object ApiModule {
     @Provides
     fun provideBaseURL(): String = "https://api.coinone.co.kr"
