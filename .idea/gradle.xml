@@ -25,11 +25,14 @@
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/data-coinone" />
             <option value="$PROJECT_DIR$/core/designsystem" />
+            <option value="$PROJECT_DIR$/core/model-coinone" />
             <option value="$PROJECT_DIR$/core/network-coinone" />
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/coinone-order" />
             <option value="$PROJECT_DIR$/feature/shopping" />
             <option value="$PROJECT_DIR$/feature/shopping-detail" />
             <option value="$PROJECT_DIR$/presentation" />
