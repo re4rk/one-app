@@ -30,16 +30,19 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.re4rk.oneapp.core.model.coinone.Ask
 import com.re4rk.oneapp.core.model.coinone.Bid
 import com.re4rk.oneapp.core.model.coinone.OrderBook
+import com.re4rk.oneapp.core.model.coinone.Ticker
 
 @Composable
 fun OrderRoute(
     vm: OrderViewModel = hiltViewModel(),
 ) {
     val orderBookState = vm.orderBook.collectAsStateWithLifecycle()
+    val tickerState = vm.ticker.collectAsStateWithLifecycle()
 
     orderBookState.value.onSuccess {
         OrderScreen(
             orderBook = orderBookState.value.getOrThrow(),
+            ticker = tickerState.value.getOrThrow(),
         )
     }
 }
@@ -47,6 +50,7 @@ fun OrderRoute(
 @Composable
 fun OrderScreen(
     orderBook: OrderBook,
+    ticker: Ticker,
 ) {
     Box {
         Column {
@@ -244,6 +248,26 @@ fun CoinoneOrderScreenPreview() {
                 quoteCurrency = "KRW",
                 result = "success",
                 targetCurrency = "BTC",
+            ),
+            Ticker(
+                quoteCurrency = "krw",
+                targetCurrency = "btc",
+                timestamp = 1634169600,
+                yesterdayFirst = "58600000",
+                yesterdayHigh = "58600000",
+                yesterdayLast = "58600000",
+                yesterdayLow = "58600000",
+                yesterdayQuoteVolume = "0.0",
+                yesterdayTargetVolume = "0.0",
+                bestAsks = listOf(Ask("58678000", "0.05851352")),
+                bestBids = listOf(Bid("58500000", "0.06182624")),
+                first = "58600000",
+                high = "58600000",
+                last = "58600000",
+                low = "58600000",
+                quoteVolume = "0.0",
+                targetVolume = "0.0",
+                id = "1705569058746001",
             ),
         )
     }
