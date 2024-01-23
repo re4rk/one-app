@@ -13,4 +13,10 @@ data class Ticker(
     val targetCurrency: String,
     val targetVolume: String,
     val timestamp: Long,
+    val yesterdayFirst: String?,
+    val yesterdayHigh: String?,
+    val yesterdayLast: String?,
+    val yesterdayLow: String?,
+    val yesterdayQuoteVolume: String?,
+    val yesterdayTargetVolume: String?,
 )

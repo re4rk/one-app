@@ -27,15 +27,16 @@ class DefaultCoinoneRepository(
     override suspend fun getTicker(
         quoteCurrency: String,
         targetCurrency: String,
-    ): Result<List<Ticker>> {
+    ): Result<Ticker> {
         val response = coinoneRetrofitService.getTicker(
             quoteCurrency = quoteCurrency,
             targetCurrency = targetCurrency,
+            additionalData = true,
         )
 
         return if (response.isSuccessful) {
             val body = response.body()!!
-            Result.success(body.toDomain())
+            Result.success(body.toSingleDomain())
         } else {
             Result.failure(Throwable(response.message()))
         }

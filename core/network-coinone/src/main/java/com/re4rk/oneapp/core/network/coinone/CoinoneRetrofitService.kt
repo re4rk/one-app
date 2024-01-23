@@ -5,6 +5,7 @@ import com.re4rk.oneapp.core.network.coinone.model.TickersDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CoinoneRetrofitService {
     @GET("/public/v2/orderbook/{quoteCurrency}/{targetCurrency}")
@@ -17,5 +18,6 @@ interface CoinoneRetrofitService {
     suspend fun getTicker(
         @Path("quote_currency") quoteCurrency: String,
         @Path("target_currency") targetCurrency: String,
+        @Query("additional_data") additionalData: Boolean = false,
     ): Response<TickersDto>
 }

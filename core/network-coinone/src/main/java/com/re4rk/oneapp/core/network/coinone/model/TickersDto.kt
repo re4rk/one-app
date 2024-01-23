@@ -16,4 +16,5 @@ data class TickersDto(
     val tickers: List<TickerDto>,
 ) {
     fun toDomain(): List<Ticker> = tickers.map { it.toDomain() }
+    fun toSingleDomain(): Ticker = tickers.first().toDomain()
 }

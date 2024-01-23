@@ -30,6 +30,18 @@ data class TickerDto(
     val targetVolume: String,
     @SerialName("timestamp")
     val timestamp: Long,
+    @SerialName("yesterday_first")
+    val yesterdayFirst: String? = null,
+    @SerialName("yesterday_high")
+    val yesterdayHigh: String? = null,
+    @SerialName("yesterday_last")
+    val yesterdayLast: String? = null,
+    @SerialName("yesterday_low")
+    val yesterdayLow: String? = null,
+    @SerialName("yesterday_quote_volume")
+    val yesterdayQuoteVolume: String? = null,
+    @SerialName("yesterday_target_volume")
+    val yesterdayTargetVolume: String? = null,
 ) {
     fun toDomain() = Ticker(
         bestAsks = bestAsks.map { it.toDomain() },
@@ -44,5 +56,11 @@ data class TickerDto(
         targetCurrency = targetCurrency,
         targetVolume = targetVolume,
         timestamp = timestamp,
+        yesterdayFirst = yesterdayFirst,
+        yesterdayHigh = yesterdayHigh,
+        yesterdayLast = yesterdayLast,
+        yesterdayLow = yesterdayLow,
+        yesterdayQuoteVolume = yesterdayQuoteVolume,
+        yesterdayTargetVolume = yesterdayTargetVolume,
     )
 }
