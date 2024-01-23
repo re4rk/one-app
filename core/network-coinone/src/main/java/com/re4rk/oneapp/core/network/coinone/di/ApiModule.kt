@@ -1,7 +1,7 @@
 package com.re4rk.oneapp.core.network.coinone.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.re4rk.oneapp.core.network.coinone.CoinoneOrderBookRetrofitService
+import com.re4rk.oneapp.core.network.coinone.CoinoneRetrofitService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -64,6 +64,6 @@ object ApiModule {
     @Provides
     fun provideCoinoneOrderBookRetrofitService(
         @CoinoneRetrofit retrofit: Retrofit,
-    ): CoinoneOrderBookRetrofitService =
-        retrofit.create(CoinoneOrderBookRetrofitService::class.java)
+    ): CoinoneRetrofitService =
+        retrofit.create(CoinoneRetrofitService::class.java)
 }
