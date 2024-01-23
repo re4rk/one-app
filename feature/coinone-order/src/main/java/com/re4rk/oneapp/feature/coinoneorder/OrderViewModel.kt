@@ -6,6 +6,7 @@ import com.re4rk.oneapp.core.data.coinone.CoinoneRepository
 import com.re4rk.oneapp.core.model.coinone.OrderBook
 import com.re4rk.oneapp.core.model.coinone.Ticker
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
@@ -17,7 +18,10 @@ class OrderViewModel @Inject constructor(
     private val coinoneRepository: CoinoneRepository,
 ) : ViewModel() {
     val orderBook: StateFlow<Result<OrderBook>> = flow {
-        emit(coinoneRepository.getOrderBook("KRW", "BTC"))
+        while (true) {
+            emit(coinoneRepository.getOrderBook("KRW", "BTC"))
+            delay(1000)
+        }
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(),
@@ -25,7 +29,11 @@ class OrderViewModel @Inject constructor(
     )
 
     val ticker: StateFlow<Result<Ticker>> = flow {
-        emit(coinoneRepository.getTicker("KRW", "BTC"))
+        // repeat emit
+        while (true) {
+            emit(coinoneRepository.getTicker("KRW", "BTC"))
+            delay(1000)
+        }
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(),
