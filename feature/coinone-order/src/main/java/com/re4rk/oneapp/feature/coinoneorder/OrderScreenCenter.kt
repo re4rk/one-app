@@ -15,7 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,23 +28,25 @@ import androidx.compose.ui.unit.sp
 import com.re4rk.oneapp.core.model.coinone.Ask
 import com.re4rk.oneapp.core.model.coinone.Bid
 import com.re4rk.oneapp.core.model.coinone.OrderBook
+import com.re4rk.oneapp.core.model.coinone.Ticker
 
 @Composable
 internal fun ColumnScope.OrderScreenCenter(
     orderBook: OrderBook,
+    ticker: Ticker,
 ) {
     Row(Modifier.weight(1f)) {
         LazyColumn(
             Modifier.width(191.dp),
-            state = LazyListState(
-                firstVisibleItemIndex = orderBook.asks.size - 8,
+            state = rememberLazyListState(
+                initialFirstVisibleItemIndex = orderBook.asks.size - 8,
             ),
         ) {
             for (ask in orderBook.asks.reversed()) {
-                item { OrderAskBox(ask) }
+                item { OrderAskBox(ask, ticker) }
             }
             for (bid in orderBook.bids) {
-                item { OrderBidBox(bid) }
+                item { OrderBidBox(bid, ticker) }
             }
         }
         Box(
@@ -59,7 +61,10 @@ internal fun ColumnScope.OrderScreenCenter(
 @Composable
 internal fun OrderBidBox(
     bid: Bid,
+    ticker: Ticker,
 ) {
+    val yesterdayLast = (ticker.yesterdayLast ?: "").toDouble()
+    val fluctuation = (bid.price.toDouble() - yesterdayLast) / yesterdayLast * 100
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -80,7 +85,7 @@ internal fun OrderBidBox(
                 color = Color(0xFF1763B6),
             )
             Text(
-                text = "-0.51%",
+                text = "%,.2f%%".format(fluctuation),
                 fontSize = 10.sp,
                 color = Color(0xFF1763B6),
             )
@@ -107,7 +112,10 @@ internal fun OrderBidBox(
 @Composable
 internal fun OrderAskBox(
     ask: Ask,
+    ticker: Ticker,
 ) {
+    val yesterdayLast = (ticker.yesterdayLast ?: "").toDouble()
+    val fluctuation = (ask.price.toDouble() - yesterdayLast) / yesterdayLast * 100
     Row(
         modifier = Modifier
             .wrapContentWidth()
@@ -128,7 +136,7 @@ internal fun OrderAskBox(
                 color = Color(0xFF1763B6),
             )
             Text(
-                text = "-0.51%",
+                text = "%,.2f%%".format(fluctuation),
                 fontSize = 10.sp,
                 color = Color(0xFF1763B6),
             )
@@ -159,6 +167,7 @@ internal fun CoinoneOrderScreenCenterPreview() {
         Column {
             OrderScreenCenter(
                 orderBook = FakeObject.orderBook,
+                ticker = FakeObject.ticker,
             )
         }
     }

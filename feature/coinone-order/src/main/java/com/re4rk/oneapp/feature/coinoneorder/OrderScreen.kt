@@ -71,7 +71,7 @@ fun OrderScreen(
 ) = Column {
     OrderScreenTop(ticker)
 
-    OrderScreenCenter(orderBook)
+    OrderScreenCenter(orderBook, ticker)
 
     OrderScreenBottom()
 }
