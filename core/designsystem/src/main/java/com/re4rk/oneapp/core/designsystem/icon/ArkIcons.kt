@@ -11,6 +11,7 @@ import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.List
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Remove
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.ShoppingBag
@@ -18,6 +19,7 @@ import androidx.compose.material.icons.rounded.ShoppingCart
 
 object ArkIcons {
     val Add = Icons.Rounded.Add
+    val Remove = Icons.Rounded.Remove
     val ArrowBack = Icons.Rounded.ArrowBack
     val Check = Icons.Rounded.Check
     val Close = Icons.Rounded.Close
