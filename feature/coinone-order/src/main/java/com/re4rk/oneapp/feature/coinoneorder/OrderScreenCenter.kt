@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -125,13 +126,38 @@ internal fun ColumnScope.OrderScreenCenter(
                 )
             }
 
-            Spacer(modifier = Modifier.padding(20.dp))
+            Spacer(modifier = Modifier.padding(4.dp))
+
+            OutlinedButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier.wrapContentSize().height(24.dp),
+                contentPadding = PaddingValues(
+                    horizontal = 8.dp,
+                    vertical = 4.dp,
+                ),
+                shape = RoundedCornerShape(4.dp),
+                border = BorderStroke(1.dp, Color(0xFFC9CCD2)),
+            ) {
+                Text(
+                    text = "현재가 대비 %",
+                    fontSize = 11.sp,
+                    color = Color(0xff484D55),
+                )
+                Image(
+                    imageVector = ArkIcons.ArrowDropDown,
+                    colorFilter = ColorFilter.tint(Color(0xff484d55)),
+                    contentDescription = null,
+                )
+            }
+            Spacer(modifier = Modifier.padding(8.dp))
 
             PriceBox(prefix = "수량", price = "0", suffix = "BTC")
 
             Spacer(modifier = Modifier.padding(20.dp))
 
             PriceBox(prefix = "총액", price = "0", suffix = "KRW")
+
+            Spacer(modifier = Modifier.padding(8.dp))
 
             TextBox(text = "로그인", color = uiState.tradeMode.color)
 
@@ -220,6 +246,9 @@ fun RadioButtons(
                     unselectedColor = Color(0xFFC9CCD2),
                 ),
             )
+
+            Spacer(modifier = Modifier.padding(2.dp))
+
             Text(
                 text = tradeWay.text,
                 modifier = Modifier

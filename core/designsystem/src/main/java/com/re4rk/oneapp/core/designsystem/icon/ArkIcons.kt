@@ -5,6 +5,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.ArrowDropDown
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.DateRange
@@ -21,6 +22,7 @@ object ArkIcons {
     val Add = Icons.Rounded.Add
     val Remove = Icons.Rounded.Remove
     val ArrowBack = Icons.Rounded.ArrowBack
+    val ArrowDropDown = Icons.Rounded.ArrowDropDown
     val Check = Icons.Rounded.Check
     val Close = Icons.Rounded.Close
     val Home = Icons.Default.Home
