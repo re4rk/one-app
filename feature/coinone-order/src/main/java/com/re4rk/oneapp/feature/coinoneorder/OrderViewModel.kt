@@ -7,6 +7,7 @@ import com.re4rk.oneapp.core.model.coinone.OrderBook
 import com.re4rk.oneapp.core.model.coinone.Ticker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
@@ -17,6 +18,10 @@ import javax.inject.Inject
 class OrderViewModel @Inject constructor(
     private val coinoneRepository: CoinoneRepository,
 ) : ViewModel() {
+    private val _uiState: MutableStateFlow<OrderScreenUiState> =
+        MutableStateFlow(OrderScreenUiState())
+    val uiState: StateFlow<OrderScreenUiState> = _uiState
+
     val orderBook: StateFlow<Result<OrderBook>> = flow {
         while (true) {
             emit(coinoneRepository.getOrderBook("KRW", "BTC"))

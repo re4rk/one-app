@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.re4rk.oneapp.core.designsystem.theme.CoinoneTheme
 import com.re4rk.oneapp.core.model.coinone.OrderBook
 import com.re4rk.oneapp.core.model.coinone.Ticker
 import kotlin.math.roundToInt
@@ -39,6 +40,8 @@ fun OrderRoute(
 ) {
     val orderBookState = vm.orderBook.collectAsStateWithLifecycle()
     val tickerState = vm.ticker.collectAsStateWithLifecycle()
+
+    val uiState = remember { mutableStateOf(OrderScreenUiState()) }
 
     when {
         orderBookState.value.isFailure -> {
@@ -57,8 +60,11 @@ fun OrderRoute(
 
         else -> {
             OrderScreen(
+                uiState = uiState.value,
                 orderBook = orderBookState.value.getOrThrow(),
                 ticker = tickerState.value.getOrThrow(),
+                onTradeModeChange = { uiState.value = uiState.value.copy(tradeMode = it) },
+                onTradeWayChange = { uiState.value = uiState.value.copy(tradeWay = it) },
             )
         }
     }
@@ -66,12 +72,15 @@ fun OrderRoute(
 
 @Composable
 fun OrderScreen(
+    uiState: OrderScreenUiState = OrderScreenUiState(),
     orderBook: OrderBook,
     ticker: Ticker,
+    onTradeModeChange: (TradeMode) -> Unit = {},
+    onTradeWayChange: (TradeWay) -> Unit = {},
 ) = Column {
     OrderScreenTop(ticker)
 
-    OrderScreenCenter(orderBook, ticker)
+    OrderScreenCenter(uiState, orderBook, ticker, onTradeModeChange, onTradeWayChange)
 
     OrderScreenBottom()
 }
@@ -96,15 +105,13 @@ private fun OrderScreenTop(
         Spacer(modifier = Modifier.padding(10.dp))
         Text(
             text = "%,d".format(ticker.last.toDouble().toLong()),
-            style = MaterialTheme.typography.titleLarge,
-            color = Color(0xFF1763B6),
-            fontSize = 24.sp,
+            style = CoinoneTheme.typography.titleLarge,
         )
         Spacer(modifier = Modifier.padding(4.dp))
         Column {
             Text(
                 text = "%,d".format(dailyFluctuation.toLong()),
-                color = Color(0xFF1763B6),
+                color = CoinoneTheme.colorScheme.primary,
                 fontSize = 10.sp,
             )
             Text(
